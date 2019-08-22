@@ -79,14 +79,17 @@
 
 
 
+<meta name="description" content="Medium https://leetcode.com/problems/majority-element-ii/ Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times. Note: The algorithm should run in linear time and in">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test_my_site">
-<meta property="og:url" content="http://yoursite.com/2019/08/21/test-my-site/index.html">
+<meta property="og:title" content="229. Majority Element II">
+<meta property="og:url" content="http://yoursite.com/2019/08/23/229-Majority-Element-II/index.html">
 <meta property="og:site_name" content="APARECIUM">
+<meta property="og:description" content="Medium https://leetcode.com/problems/majority-element-ii/ Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times. Note: The algorithm should run in linear time and in">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-21T14:20:49.232Z">
+<meta property="og:updated_time" content="2019-08-22T16:35:36.024Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test_my_site">
+<meta name="twitter:title" content="229. Majority Element II">
+<meta name="twitter:description" content="Medium https://leetcode.com/problems/majority-element-ii/ Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times. Note: The algorithm should run in linear time and in">
 
 
 
@@ -116,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/21/test-my-site/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/23/229-Majority-Element-II/">
 
 
 
 
 
-  <title>test_my_site | APARECIUM</title>
+  <title>229. Majority Element II | APARECIUM</title>
   
 
 
@@ -229,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/test-my-site/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/23/229-Majority-Element-II/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -246,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test_my_site</h1>
+          <h1 class="post-title" itemprop="name headline">229. Majority Element II</h1>
         
 
         <div class="post-meta">
@@ -258,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-21T22:20:49+08:00">
-                2019-08-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-23T00:33:21+08:00">
+                2019-08-23
               </time>
             
 
@@ -296,7 +299,17 @@
       
 
       
-        
+        <p>Medium</p>
+<p><a href="https://leetcode.com/problems/majority-element-ii/" target="_blank" rel="noopener">https://leetcode.com/problems/majority-element-ii/</a></p>
+<p>Given an integer array of size <em>n</em>, find all elements that appear more than <code>⌊ n/3 ⌋</code> times.</p>
+<p><strong>Note:</strong> The algorithm should run in linear time and in O(1) space.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,1,1,3,3,2,2,2]</span><br><span class="line">Output: [1,2]</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">majorityElement</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums</span><br><span class="line">        ans = [<span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">        cnt = [<span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            match = <span class="literal">False</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">                <span class="keyword">if</span> ans[j]==nums[i]:</span><br><span class="line">                    match = <span class="literal">True</span></span><br><span class="line">                    cnt[j] += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> match:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            full = <span class="literal">True</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">                <span class="keyword">if</span> cnt[j]==<span class="number">0</span> :</span><br><span class="line">                    ans[j] = nums[i]</span><br><span class="line">                    cnt[j] += <span class="number">1</span></span><br><span class="line">                    full = <span class="literal">False</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            match = <span class="literal">False</span></span><br><span class="line">            <span class="keyword">if</span> full:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">                    <span class="keyword">if</span> nums[i]==ans[j]:</span><br><span class="line">                        cnt[j] += <span class="number">1</span></span><br><span class="line">                        match = <span class="literal">True</span></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> match:</span><br><span class="line">                    cnt[<span class="number">0</span>] -= <span class="number">1</span></span><br><span class="line">                    cnt[<span class="number">1</span>] -= <span class="number">1</span></span><br><span class="line">        res = [ans[i] <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>) <span class="keyword">if</span> cnt[i]&gt;<span class="number">0</span>]</span><br><span class="line">        cnt = [<span class="number">0</span>]*len(res)</span><br><span class="line">        <span class="keyword">if</span> len(res)&gt;<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(len(res)):</span><br><span class="line">                    <span class="keyword">if</span> n==res[j]:</span><br><span class="line">                        cnt[j] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> [res[i] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(cnt)) <span class="keyword">if</span> cnt[i]&gt;len(nums)/<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -320,8 +333,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/21/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/08/22/169-Majority-Element/" rel="next" title="169. Majority Element">
+                <i class="fa fa-chevron-left"></i> 169. Majority Element
               </a>
             
           </div>
@@ -329,10 +342,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/21/79-Word-Search/" rel="prev" title="79. Word Search">
-                79. Word Search <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
