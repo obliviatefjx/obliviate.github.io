@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Medium https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/">
+<meta name="description" content="Medium https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/ Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find">
 <meta property="og:type" content="article">
 <meta property="og:title" content="309. Best Time to Buy and Sell Stock with Cooldown">
 <meta property="og:url" content="http://yoursite.com/2019/08/23/309-Best-Time-to-Buy-and-Sell-Stock-with-Cooldown/index.html">
 <meta property="og:site_name" content="APARECIUM">
-<meta property="og:description" content="Medium https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/">
+<meta property="og:description" content="Medium https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/ Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-23T07:35:37.324Z">
+<meta property="og:updated_time" content="2019-08-23T15:23:56.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="309. Best Time to Buy and Sell Stock with Cooldown">
-<meta name="twitter:description" content="Medium https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/">
+<meta name="twitter:description" content="Medium https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/ Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find">
 
 
 
@@ -301,6 +301,22 @@
       
         <p>Medium</p>
 <p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" target="_blank" rel="noopener">https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/</a></p>
+<p>Say you have an array for which the <em>i</em>th element is the price of a given stock on day <em>i</em>.</p>
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times) with the following restrictions:</p>
+<ul>
+<li>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</li>
+<li>After you sell your stock, you cannot buy stock on next day. (ie, cooldown 1 day)</li>
+</ul>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,0,2]</span><br><span class="line">Output: 3 </span><br><span class="line">Explanation: transactions = [buy, sell, cooldown, buy, sell]</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法：</strong></p>
+<ol>
+<li>sell 该天结束手里<strong>没有</strong>股票的情况下，已经获得的最大收益</li>
+<li>buy 该天结束手里<strong>有</strong>股票的情况下，已经获得的最大收益</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type prices: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(prices)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        buy = [<span class="number">0</span>] * len(prices)</span><br><span class="line">        sell = [<span class="number">0</span>] * len(prices)</span><br><span class="line">        buy[<span class="number">0</span>] = -prices[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(prices)):</span><br><span class="line">            <span class="keyword">if</span> i&lt;<span class="number">2</span>:</span><br><span class="line">                buy[i] = max(-prices[i], buy[i<span class="number">-1</span>])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                buy[i] = max(sell[i<span class="number">-2</span>]-prices[i], buy[i<span class="number">-1</span>])</span><br><span class="line">            sell[i] = max(sell[i<span class="number">-1</span>], buy[i<span class="number">-1</span>] + prices[i])</span><br><span class="line">        <span class="keyword">return</span> sell[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -334,6 +350,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/23/714-Best-Time-to-Buy-and-Sell-Stock-with-Transaction-Fee/" rel="prev" title="714. Best Time to Buy and Sell Stock with Transaction Fee">
+                714. Best Time to Buy and Sell Stock with Transaction Fee <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -401,7 +421,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
