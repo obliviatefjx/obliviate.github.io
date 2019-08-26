@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Hard https://leetcode.com/problems/burst-balloons/ Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums. You are asked to burst all the balloo">
+<meta name="description" content="Easy https://leetcode.com/problems/shortest-unsorted-continuous-subarray/ Given an integer array, you need to find one continuous subarray that if you only sort this subarray in ascending order, then">
 <meta property="og:type" content="article">
-<meta property="og:title" content="312. Burst Balloons">
-<meta property="og:url" content="http://yoursite.com/2019/08/24/312-Burst-Balloons/index.html">
+<meta property="og:title" content="581. Shortest Unsorted Continuous Subarray">
+<meta property="og:url" content="http://yoursite.com/2019/08/25/581-Shortest-Unsorted-Continuous-Subarray/index.html">
 <meta property="og:site_name" content="APARECIUM">
-<meta property="og:description" content="Hard https://leetcode.com/problems/burst-balloons/ Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums. You are asked to burst all the balloo">
+<meta property="og:description" content="Easy https://leetcode.com/problems/shortest-unsorted-continuous-subarray/ Given an integer array, you need to find one continuous subarray that if you only sort this subarray in ascending order, then">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-23T17:10:52.924Z">
+<meta property="og:updated_time" content="2019-08-24T17:25:58.429Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="312. Burst Balloons">
-<meta name="twitter:description" content="Hard https://leetcode.com/problems/burst-balloons/ Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums. You are asked to burst all the balloo">
+<meta name="twitter:title" content="581. Shortest Unsorted Continuous Subarray">
+<meta name="twitter:description" content="Easy https://leetcode.com/problems/shortest-unsorted-continuous-subarray/ Given an integer array, you need to find one continuous subarray that if you only sort this subarray in ascending order, then">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/24/312-Burst-Balloons/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/25/581-Shortest-Unsorted-Continuous-Subarray/">
 
 
 
 
 
-  <title>312. Burst Balloons | APARECIUM</title>
+  <title>581. Shortest Unsorted Continuous Subarray | APARECIUM</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/312-Burst-Balloons/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/25/581-Shortest-Unsorted-Continuous-Subarray/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">312. Burst Balloons</h1>
+          <h1 class="post-title" itemprop="name headline">581. Shortest Unsorted Continuous Subarray</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-24T00:41:28+08:00">
-                2019-08-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-25T01:23:51+08:00">
+                2019-08-25
               </time>
             
 
@@ -299,21 +299,25 @@
       
 
       
-        <p><strong>Hard</strong></p>
-<p><a href="https://leetcode.com/problems/burst-balloons/" target="_blank" rel="noopener">https://leetcode.com/problems/burst-balloons/</a></p>
-<p>Given <code>n</code> balloons, indexed from <code>0</code> to <code>n-1</code>. Each balloon is painted with a number on it represented by array <code>nums</code>. You are asked to burst all the balloons. If the you burst balloon <code>i</code> you will get <code>nums[left] * nums[i] * nums[right]</code> coins. Here <code>left</code> and <code>right</code> are adjacent indices of <code>i</code>. After the burst, the <code>left</code> and <code>right</code> then becomes adjacent.</p>
-<p>Find the maximum coins you can collect by bursting the balloons wisely.</p>
-<p><strong>Note:</strong></p>
-<ul>
-<li>You may imagine <code>nums[-1] = nums[n] = 1</code>. They are not real therefore you can not burst them.</li>
-<li>0 ≤ <code>n</code> ≤ 500, 0 ≤ <code>nums[i]</code> ≤ 100</li>
-</ul>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,1,5,8]</span><br><span class="line">Output: 167 </span><br><span class="line">Explanation: nums = [3,1,5,8] --&gt; [3,5,8] --&gt;   [3,8]   --&gt;  [8]  --&gt; []</span><br><span class="line">             coins =  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   = 167</span><br></pre></td></tr></table></figure>
+        <p>Easy</p>
+<p><a href="https://leetcode.com/problems/shortest-unsorted-continuous-subarray/" target="_blank" rel="noopener">https://leetcode.com/problems/shortest-unsorted-continuous-subarray/</a></p>
+<p>Given an integer array, you need to find one <strong>continuous subarray</strong> that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order, too.</p>
+<p>You need to find the <strong>shortest</strong> such subarray and output its length.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [2, 6, 4, 8, 10, 9, 15]</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.</span><br></pre></td></tr></table></figure>
 
+<p><strong>Note:</strong></p>
+<ol>
+<li>Then length of the input array is in range [1, 10,000].</li>
+<li>The input array may contain duplicates, so ascending order here means <strong>&lt;=</strong></li>
+</ol>
 <p><strong>方法：</strong></p>
-<p>边界条件好难写…</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxCoins</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">        <span class="comment"># 在 nums 首尾增加 1 作为辅助</span></span><br><span class="line">        arr = [<span class="number">0</span>]*(len(nums)+<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            arr[i+<span class="number">1</span>] = nums[i]</span><br><span class="line">        arr[<span class="number">0</span>], arr[<span class="number">-1</span>] = <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        dp = [[<span class="number">0</span>]*(len(nums)+<span class="number">2</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(len(nums)+<span class="number">2</span>)]</span><br><span class="line">        <span class="keyword">for</span> len_ <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> left <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)+<span class="number">2</span>-len_):</span><br><span class="line">                right = left + len_ - <span class="number">1</span></span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> range(left, right+<span class="number">1</span>):</span><br><span class="line">                    dp[left][right] = max(dp[left][right], dp[left][k<span class="number">-1</span>]+dp[k+<span class="number">1</span>][right]+arr[k]*arr[left<span class="number">-1</span>]*arr[right+<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">1</span>][len(nums)]</span><br></pre></td></tr></table></figure>
+<p>先排序，然后找排序前后第一个和最后一个不同的数字位置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findUnsortedSubarray</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        new = sorted(nums)</span><br><span class="line">        l,r = <span class="number">0</span>,len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> l&lt;len(nums)<span class="number">-1</span> <span class="keyword">and</span> nums[l]==new[l]:</span><br><span class="line">            l += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> l==len(nums)<span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> r&gt;<span class="number">0</span> <span class="keyword">and</span> nums[r]==new[r]:</span><br><span class="line">            r -= <span class="number">1</span>  </span><br><span class="line">        <span class="keyword">return</span> r-l+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>Construct Binary Tree from Inorder and Postorder Traversal<br>Minimum Size Subarray Sum<br>Beautiful Arrangement II</p>
+
       
     </div>
     
@@ -337,8 +341,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/23/714-Best-Time-to-Buy-and-Sell-Stock-with-Transaction-Fee/" rel="next" title="714. Best Time to Buy and Sell Stock with Transaction Fee">
-                <i class="fa fa-chevron-left"></i> 714. Best Time to Buy and Sell Stock with Transaction Fee
+              <a href="/2019/08/24/978-Longest-Turbulent-Subarray/" rel="next" title="978. Longest Turbulent Subarray">
+                <i class="fa fa-chevron-left"></i> 978. Longest Turbulent Subarray
               </a>
             
           </div>
@@ -347,8 +351,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/24/1-Two-Sum/" rel="prev" title="1. Two Sum">
-                1. Two Sum <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/26/209-Minimum-Size-Subarray-Sum/" rel="prev" title="209. Minimum Size Subarray Sum">
+                209. Minimum Size Subarray Sum <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

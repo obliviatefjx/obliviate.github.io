@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Hard https://leetcode.com/problems/burst-balloons/ Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums. You are asked to burst all the balloo">
+<meta name="description" content="Medium https://leetcode.com/problems/4sum/ Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums such that a + b + c + d = target? Find all unique quadrupl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="312. Burst Balloons">
-<meta property="og:url" content="http://yoursite.com/2019/08/24/312-Burst-Balloons/index.html">
+<meta property="og:title" content="18. 4Sum">
+<meta property="og:url" content="http://yoursite.com/2019/08/24/18-4Sum/index.html">
 <meta property="og:site_name" content="APARECIUM">
-<meta property="og:description" content="Hard https://leetcode.com/problems/burst-balloons/ Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums. You are asked to burst all the balloo">
+<meta property="og:description" content="Medium https://leetcode.com/problems/4sum/ Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums such that a + b + c + d = target? Find all unique quadrupl">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-23T17:10:52.924Z">
+<meta property="og:updated_time" content="2019-08-24T11:34:04.933Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="312. Burst Balloons">
-<meta name="twitter:description" content="Hard https://leetcode.com/problems/burst-balloons/ Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums. You are asked to burst all the balloo">
+<meta name="twitter:title" content="18. 4Sum">
+<meta name="twitter:description" content="Medium https://leetcode.com/problems/4sum/ Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums such that a + b + c + d = target? Find all unique quadrupl">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/24/312-Burst-Balloons/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/24/18-4Sum/">
 
 
 
 
 
-  <title>312. Burst Balloons | APARECIUM</title>
+  <title>18. 4Sum | APARECIUM</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/312-Burst-Balloons/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/18-4Sum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">312. Burst Balloons</h1>
+          <h1 class="post-title" itemprop="name headline">18. 4Sum</h1>
         
 
         <div class="post-meta">
@@ -261,7 +261,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-24T00:41:28+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-24T19:27:05+08:00">
                 2019-08-24
               </time>
             
@@ -299,21 +299,21 @@
       
 
       
-        <p><strong>Hard</strong></p>
-<p><a href="https://leetcode.com/problems/burst-balloons/" target="_blank" rel="noopener">https://leetcode.com/problems/burst-balloons/</a></p>
-<p>Given <code>n</code> balloons, indexed from <code>0</code> to <code>n-1</code>. Each balloon is painted with a number on it represented by array <code>nums</code>. You are asked to burst all the balloons. If the you burst balloon <code>i</code> you will get <code>nums[left] * nums[i] * nums[right]</code> coins. Here <code>left</code> and <code>right</code> are adjacent indices of <code>i</code>. After the burst, the <code>left</code> and <code>right</code> then becomes adjacent.</p>
-<p>Find the maximum coins you can collect by bursting the balloons wisely.</p>
+        <p>Medium</p>
+<p><a href="https://leetcode.com/problems/4sum/" target="_blank" rel="noopener">https://leetcode.com/problems/4sum/</a></p>
+<p>Given an array <code>nums</code> of <em>n</em> integers and an integer <code>target</code>, are there elements <em>a</em>, <em>b</em>, <em>c</em>, and <em>d</em> in <code>nums</code> such that <em>a</em> + <em>b</em> + <em>c</em> + <em>d</em> = <code>target</code>? Find all unique quadruplets in the array which gives the sum of <code>target</code>.</p>
 <p><strong>Note:</strong></p>
-<ul>
-<li>You may imagine <code>nums[-1] = nums[n] = 1</code>. They are not real therefore you can not burst them.</li>
-<li>0 ≤ <code>n</code> ≤ 500, 0 ≤ <code>nums[i]</code> ≤ 100</li>
-</ul>
+<p>The solution set must not contain duplicate quadruplets.</p>
 <p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,1,5,8]</span><br><span class="line">Output: 167 </span><br><span class="line">Explanation: nums = [3,1,5,8] --&gt; [3,5,8] --&gt;   [3,8]   --&gt;  [8]  --&gt; []</span><br><span class="line">             coins =  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   = 167</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Given array nums = [1, 0, -1, 0, -2, 2], and target = 0.</span><br><span class="line"></span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [-1,  0, 0, 1],</span><br><span class="line">  [-2, -1, 1, 2],</span><br><span class="line">  [-2,  0, 0, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
 <p><strong>方法：</strong></p>
-<p>边界条件好难写…</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxCoins</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">        <span class="comment"># 在 nums 首尾增加 1 作为辅助</span></span><br><span class="line">        arr = [<span class="number">0</span>]*(len(nums)+<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            arr[i+<span class="number">1</span>] = nums[i]</span><br><span class="line">        arr[<span class="number">0</span>], arr[<span class="number">-1</span>] = <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        dp = [[<span class="number">0</span>]*(len(nums)+<span class="number">2</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(len(nums)+<span class="number">2</span>)]</span><br><span class="line">        <span class="keyword">for</span> len_ <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> left <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)+<span class="number">2</span>-len_):</span><br><span class="line">                right = left + len_ - <span class="number">1</span></span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> range(left, right+<span class="number">1</span>):</span><br><span class="line">                    dp[left][right] = max(dp[left][right], dp[left][k<span class="number">-1</span>]+dp[k+<span class="number">1</span>][right]+arr[k]*arr[left<span class="number">-1</span>]*arr[right+<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">1</span>][len(nums)]</span><br></pre></td></tr></table></figure>
+<p>不能照搬 15. 3Sum 的方法。区别在于这道题有一个 target 值不知道正负，所以不能靠判断最前面的数字是否大于 target 来剪枝。另外需要注意这道题的去重方法，是先判断当前四个数字的和然后再去重的，15. 3Sum 是先做了去重然后判断数字和。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fourSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;<span class="number">4</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        nums.sort()</span><br><span class="line">        ans = []</span><br><span class="line">        p = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> p&lt;len(nums)<span class="number">-3</span>:</span><br><span class="line">            q = p+<span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> q&lt;len(nums)<span class="number">-2</span>:</span><br><span class="line">                i, j = q+<span class="number">1</span>, len(nums)<span class="number">-1</span></span><br><span class="line">                <span class="keyword">while</span> i&lt;j:</span><br><span class="line">                    sum_ = nums[p] + nums[q] + nums[i] + nums[j]</span><br><span class="line">                    <span class="keyword">if</span> sum_==target:</span><br><span class="line">                        ans.append([nums[p], nums[q], nums[i], nums[j]])</span><br><span class="line">                        i += <span class="number">1</span></span><br><span class="line">                        j -= <span class="number">1</span></span><br><span class="line">                        <span class="keyword">while</span> i&lt;j <span class="keyword">and</span> nums[i]==nums[i<span class="number">-1</span>]:</span><br><span class="line">                            i += <span class="number">1</span></span><br><span class="line">                        <span class="keyword">while</span> i&lt;j <span class="keyword">and</span> nums[j]==nums[j+<span class="number">1</span>]:</span><br><span class="line">                            j -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">elif</span> sum_&lt;target:</span><br><span class="line">                        i += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        j -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">while</span> q&lt;len(nums)<span class="number">-2</span> <span class="keyword">and</span> nums[q]==nums[q+<span class="number">1</span>]:</span><br><span class="line">                    q += <span class="number">1</span></span><br><span class="line">                q += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> p&lt;len(nums)<span class="number">-3</span> <span class="keyword">and</span> nums[p]==nums[p+<span class="number">1</span>]:</span><br><span class="line">                p += <span class="number">1</span></span><br><span class="line">            p += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>4Sum II</p>
+
       
     </div>
     
@@ -337,8 +337,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/23/714-Best-Time-to-Buy-and-Sell-Stock-with-Transaction-Fee/" rel="next" title="714. Best Time to Buy and Sell Stock with Transaction Fee">
-                <i class="fa fa-chevron-left"></i> 714. Best Time to Buy and Sell Stock with Transaction Fee
+              <a href="/2019/08/24/16-3Sum-Closest/" rel="next" title="16. 3Sum Closest">
+                <i class="fa fa-chevron-left"></i> 16. 3Sum Closest
               </a>
             
           </div>
@@ -347,8 +347,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/24/1-Two-Sum/" rel="prev" title="1. Two Sum">
-                1. Two Sum <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/24/978-Longest-Turbulent-Subarray/" rel="prev" title="978. Longest Turbulent Subarray">
+                978. Longest Turbulent Subarray <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

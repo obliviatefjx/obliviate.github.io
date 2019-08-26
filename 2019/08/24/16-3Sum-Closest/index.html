@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="APARECIUM">
 <meta property="og:description" content="Medium https://leetcode.com/problems/3sum-closest/ Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the th">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-24T10:28:51.281Z">
+<meta property="og:updated_time" content="2019-08-24T10:32:10.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="16. 3Sum Closest">
 <meta name="twitter:description" content="Medium https://leetcode.com/problems/3sum-closest/ Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the th">
@@ -309,6 +309,8 @@
 <p>和 15. 3Sum 相同，只是多了一个保存最小差值的变量。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSumClosest</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;<span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        nums.sort()</span><br><span class="line">        res = float(<span class="string">'inf'</span>)</span><br><span class="line">        ans = []</span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>):</span><br><span class="line">            i,j = t+<span class="number">1</span>, len(nums)<span class="number">-1</span></span><br><span class="line">            <span class="keyword">while</span> i&lt;j:</span><br><span class="line">                sum_ = nums[t] + nums[i] + nums[j]</span><br><span class="line">                <span class="keyword">if</span> abs(sum_-target)&lt;res:</span><br><span class="line">                    res = abs(sum_ - target)</span><br><span class="line">                    ans = [nums[t], nums[i], nums[j]]</span><br><span class="line">                <span class="keyword">if</span> sum_==target:</span><br><span class="line">                    <span class="keyword">return</span> target</span><br><span class="line">                <span class="keyword">elif</span> sum_&lt;target:</span><br><span class="line">                    i += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> sum(ans)</span><br></pre></td></tr></table></figure>
 
+<p><strong>类似题目：</strong></p>
+<p>3sum-smaller</p>
 
       
     </div>
@@ -342,6 +344,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/24/18-4Sum/" rel="prev" title="18. 4Sum">
+                18. 4Sum <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -409,7 +415,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

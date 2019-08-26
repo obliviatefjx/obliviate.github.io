@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Hard https://leetcode.com/problems/burst-balloons/ Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums. You are asked to burst all the balloo">
+<meta name="description" content="Medium https://leetcode.com/problems/longest-turbulent-subarray/ A subarray A[i], A[i+1], ..., A[j] of A is said to be turbulent if and only if:  For i &amp;lt;= k &amp;lt; j, A[k] &amp;gt; A[k+1] when k is odd,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="312. Burst Balloons">
-<meta property="og:url" content="http://yoursite.com/2019/08/24/312-Burst-Balloons/index.html">
+<meta property="og:title" content="978. Longest Turbulent Subarray">
+<meta property="og:url" content="http://yoursite.com/2019/08/24/978-Longest-Turbulent-Subarray/index.html">
 <meta property="og:site_name" content="APARECIUM">
-<meta property="og:description" content="Hard https://leetcode.com/problems/burst-balloons/ Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums. You are asked to burst all the balloo">
+<meta property="og:description" content="Medium https://leetcode.com/problems/longest-turbulent-subarray/ A subarray A[i], A[i+1], ..., A[j] of A is said to be turbulent if and only if:  For i &amp;lt;= k &amp;lt; j, A[k] &amp;gt; A[k+1] when k is odd,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-23T17:10:52.924Z">
+<meta property="og:updated_time" content="2019-08-24T17:23:40.709Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="312. Burst Balloons">
-<meta name="twitter:description" content="Hard https://leetcode.com/problems/burst-balloons/ Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums. You are asked to burst all the balloo">
+<meta name="twitter:title" content="978. Longest Turbulent Subarray">
+<meta name="twitter:description" content="Medium https://leetcode.com/problems/longest-turbulent-subarray/ A subarray A[i], A[i+1], ..., A[j] of A is said to be turbulent if and only if:  For i &amp;lt;= k &amp;lt; j, A[k] &amp;gt; A[k+1] when k is odd,">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/24/312-Burst-Balloons/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/24/978-Longest-Turbulent-Subarray/">
 
 
 
 
 
-  <title>312. Burst Balloons | APARECIUM</title>
+  <title>978. Longest Turbulent Subarray | APARECIUM</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/312-Burst-Balloons/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/978-Longest-Turbulent-Subarray/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">312. Burst Balloons</h1>
+          <h1 class="post-title" itemprop="name headline">978. Longest Turbulent Subarray</h1>
         
 
         <div class="post-meta">
@@ -261,7 +261,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-24T00:41:28+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-24T22:52:43+08:00">
                 2019-08-24
               </time>
             
@@ -299,21 +299,21 @@
       
 
       
-        <p><strong>Hard</strong></p>
-<p><a href="https://leetcode.com/problems/burst-balloons/" target="_blank" rel="noopener">https://leetcode.com/problems/burst-balloons/</a></p>
-<p>Given <code>n</code> balloons, indexed from <code>0</code> to <code>n-1</code>. Each balloon is painted with a number on it represented by array <code>nums</code>. You are asked to burst all the balloons. If the you burst balloon <code>i</code> you will get <code>nums[left] * nums[i] * nums[right]</code> coins. Here <code>left</code> and <code>right</code> are adjacent indices of <code>i</code>. After the burst, the <code>left</code> and <code>right</code> then becomes adjacent.</p>
-<p>Find the maximum coins you can collect by bursting the balloons wisely.</p>
-<p><strong>Note:</strong></p>
+        <p>Medium</p>
+<p><a href="https://leetcode.com/problems/longest-turbulent-subarray/" target="_blank" rel="noopener">https://leetcode.com/problems/longest-turbulent-subarray/</a></p>
+<p>A subarray <code>A[i], A[i+1], ..., A[j]</code> of <code>A</code> is said to be <em>turbulent</em> if and only if:</p>
 <ul>
-<li>You may imagine <code>nums[-1] = nums[n] = 1</code>. They are not real therefore you can not burst them.</li>
-<li>0 ≤ <code>n</code> ≤ 500, 0 ≤ <code>nums[i]</code> ≤ 100</li>
+<li>For <code>i &lt;= k &lt; j</code>, <code>A[k] &gt; A[k+1]</code> when <code>k</code> is odd, and <code>A[k] &lt; A[k+1]</code>when <code>k</code> is even;</li>
+<li><strong>OR</strong>, for <code>i &lt;= k &lt; j</code>, <code>A[k] &gt; A[k+1]</code> when <code>k</code> is even, and <code>A[k] &lt; A[k+1]</code> when <code>k</code> is odd.</li>
 </ul>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,1,5,8]</span><br><span class="line">Output: 167 </span><br><span class="line">Explanation: nums = [3,1,5,8] --&gt; [3,5,8] --&gt;   [3,8]   --&gt;  [8]  --&gt; []</span><br><span class="line">             coins =  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   = 167</span><br></pre></td></tr></table></figure>
-
+<p>That is, the subarray is turbulent if the comparison sign flips between each adjacent pair of elements in the subarray.</p>
+<p>Return the <strong>length</strong> of a maximum size turbulent subarray of A.</p>
 <p><strong>方法：</strong></p>
-<p>边界条件好难写…</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxCoins</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">        <span class="comment"># 在 nums 首尾增加 1 作为辅助</span></span><br><span class="line">        arr = [<span class="number">0</span>]*(len(nums)+<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            arr[i+<span class="number">1</span>] = nums[i]</span><br><span class="line">        arr[<span class="number">0</span>], arr[<span class="number">-1</span>] = <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        dp = [[<span class="number">0</span>]*(len(nums)+<span class="number">2</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(len(nums)+<span class="number">2</span>)]</span><br><span class="line">        <span class="keyword">for</span> len_ <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> left <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)+<span class="number">2</span>-len_):</span><br><span class="line">                right = left + len_ - <span class="number">1</span></span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> range(left, right+<span class="number">1</span>):</span><br><span class="line">                    dp[left][right] = max(dp[left][right], dp[left][k<span class="number">-1</span>]+dp[k+<span class="number">1</span>][right]+arr[k]*arr[left<span class="number">-1</span>]*arr[right+<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">1</span>][len(nums)]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxTurbulenceSize</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 1 2 1 2 1 2 1 2 first_small</span></span><br><span class="line">        <span class="comment"># 3 2 3 2 3 2 3 2 first_big</span></span><br><span class="line">        <span class="keyword">if</span> len(A)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> len(A)</span><br><span class="line">        first_small = [<span class="number">1</span>]*len(A)</span><br><span class="line">        first_big = [<span class="number">1</span>]*len(A)</span><br><span class="line">        max_ = <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(A)):</span><br><span class="line">            <span class="keyword">if</span> i%<span class="number">2</span>==<span class="number">0</span>:</span><br><span class="line">                first_small[i] = first_small[i<span class="number">-1</span>]+<span class="number">1</span> <span class="keyword">if</span> A[i]&lt;A[i<span class="number">-1</span>] <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">                first_big[i] = first_big[i<span class="number">-1</span>]+<span class="number">1</span> <span class="keyword">if</span> A[i]&gt;A[i<span class="number">-1</span>] <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                first_small[i] = first_small[i<span class="number">-1</span>]+<span class="number">1</span> <span class="keyword">if</span> A[i]&gt;A[i<span class="number">-1</span>] <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">                first_big[i] = first_big[i<span class="number">-1</span>]+<span class="number">1</span> <span class="keyword">if</span> A[i]&lt;A[i<span class="number">-1</span>] <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">            max_ = max(max_, first_small[i], first_big[i])</span><br><span class="line">        <span class="keyword">return</span> max_</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>Freedom Trail<br>Array Partition I<br>Race Car</p>
+
       
     </div>
     
@@ -337,8 +337,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/23/714-Best-Time-to-Buy-and-Sell-Stock-with-Transaction-Fee/" rel="next" title="714. Best Time to Buy and Sell Stock with Transaction Fee">
-                <i class="fa fa-chevron-left"></i> 714. Best Time to Buy and Sell Stock with Transaction Fee
+              <a href="/2019/08/24/18-4Sum/" rel="next" title="18. 4Sum">
+                <i class="fa fa-chevron-left"></i> 18. 4Sum
               </a>
             
           </div>
@@ -347,8 +347,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/24/1-Two-Sum/" rel="prev" title="1. Two Sum">
-                1. Two Sum <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/25/581-Shortest-Unsorted-Continuous-Subarray/" rel="prev" title="581. Shortest Unsorted Continuous Subarray">
+                581. Shortest Unsorted Continuous Subarray <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
