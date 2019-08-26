@@ -51,3 +51,6 @@ class Solution(object):
         return sum(ans)
 ```
 
+**类似题目：**
+
+3sum-smaller
