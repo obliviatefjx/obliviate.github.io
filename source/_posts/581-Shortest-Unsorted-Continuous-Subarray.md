@@ -27,6 +27,8 @@ Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the wh
 
 **方法：**
 
+参考 https://blog.csdn.net/fuxuemingzhu/article/details/79254454
+
 先排序，然后找排序前后第一个和最后一个不同的数字位置。
 
 ```python
