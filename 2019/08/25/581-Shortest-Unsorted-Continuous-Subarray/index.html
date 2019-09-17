@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="APARECIUM">
 <meta property="og:description" content="Easy https://leetcode.com/problems/shortest-unsorted-continuous-subarray/ Given an integer array, you need to find one continuous subarray that if you only sort this subarray in ascending order, then">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-24T17:25:58.429Z">
+<meta property="og:updated_time" content="2019-09-08T16:27:19.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="581. Shortest Unsorted Continuous Subarray">
 <meta name="twitter:description" content="Easy https://leetcode.com/problems/shortest-unsorted-continuous-subarray/ Given an integer array, you need to find one continuous subarray that if you only sort this subarray in ascending order, then">
@@ -312,6 +312,7 @@
 <li>The input array may contain duplicates, so ascending order here means <strong>&lt;=</strong></li>
 </ol>
 <p><strong>方法：</strong></p>
+<p>参考 <a href="https://blog.csdn.net/fuxuemingzhu/article/details/79254454" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/79254454</a></p>
 <p>先排序，然后找排序前后第一个和最后一个不同的数字位置。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findUnsortedSubarray</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        new = sorted(nums)</span><br><span class="line">        l,r = <span class="number">0</span>,len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> l&lt;len(nums)<span class="number">-1</span> <span class="keyword">and</span> nums[l]==new[l]:</span><br><span class="line">            l += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> l==len(nums)<span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> r&gt;<span class="number">0</span> <span class="keyword">and</span> nums[r]==new[r]:</span><br><span class="line">            r -= <span class="number">1</span>  </span><br><span class="line">        <span class="keyword">return</span> r-l+<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
@@ -421,7 +422,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
