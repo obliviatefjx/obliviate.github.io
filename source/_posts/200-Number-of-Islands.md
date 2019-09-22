@@ -64,6 +64,43 @@ def dfs(grid, i, j):
     return 
 ```
 
+---
+
+2019.9.20 做出来了，思路和 9.10 的一样
+
+```python
+class Solution(object):
+    def numIslands(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        if len(grid)==0 or len(grid[0])==0:
+            return 0
+        m,n = len(grid), len(grid[0])
+        ans = 0
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j]=='1':
+                    ans += 1
+                    traver(grid, i, j)
+        return ans
+
+def traver(grid, i, j):
+    if i<0 or j<0 or i>=len(grid) or j>=len(grid[0]):
+        return True
+    if grid[i][j]=='0':
+        return True
+    grid[i][j] = '0'
+    if traver(grid,i-1,j) and traver(grid,i+1,j) and traver(grid,i,j-1) and traver(grid,i,j+1):
+        return True
+    return False
+```
+
+
+
+
+
 **类似题目：**
 
 Surrounded Regions
