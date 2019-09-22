@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/30/90-Subsets-II/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/04/560-Subarray-Sum-Equals-K/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/30/90-Subsets-II/" itemprop="url">90. Subsets II</a></h1>
+                <a class="post-title-link" href="/2019/09/04/560-Subarray-Sum-Equals-K/" itemprop="url">560. Subarray Sum Equals K</a></h1>
         
 
         <div class="post-meta">
@@ -260,8 +260,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-30T00:29:12+08:00">
-                2019-08-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-04T01:06:38+08:00">
+                2019-09-04
               </time>
             
 
@@ -301,427 +301,25 @@
         
           
             <p>Medium</p>
-<p><a href="https://leetcode.com/problems/subsets-ii/" target="_blank" rel="noopener">https://leetcode.com/problems/subsets-ii/</a></p>
-<p>Given a collection of integers that might contain duplicates, <strong>nums</strong>, return all possible subsets (the power set).</p>
-<p><strong>Note:</strong> The solution set must not contain duplicate subsets.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,2]</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [2],</span><br><span class="line">  [1],</span><br><span class="line">  [1,2,2],</span><br><span class="line">  [2,2],</span><br><span class="line">  [1,2],</span><br><span class="line">  []</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p><strong>2019.8.30</strong> - 没做出来，参考 <a href="https://www.cnblogs.com/grandyang/p/4310964.html" target="_blank" rel="noopener">https://www.cnblogs.com/grandyang/p/4310964.html</a> 后写出来了</p>
-<p>方法和 78. Subsets 类似，但需增加一个去重操作：“用 last 来记录上一个处理的数字，然后判定当前的数字和上面的是否相同，若不同，则循环还是从0到当前子集的个数，若相同，则新子集个数减去之前循环时子集的个数当做起点来循环，这样就不会产生重复了”</p>
-<p>要点：因为求的是 the power set（幂集），也就是说两个子集只要包含的数字相同就算是相同的，e.g. [1,4,1] 和 [1,1,4] 是相同的，所以需要先对 nums[] 排序，这样就保证了求的是幂集。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subsetsWithDup</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> [[]]</span><br><span class="line">        nums.sort()</span><br><span class="line">        ans = [[]]</span><br><span class="line">        last = nums[<span class="number">0</span>]</span><br><span class="line">        last_len = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i]!=last:</span><br><span class="line">                last = nums[i]</span><br><span class="line">                last_len = len(ans)</span><br><span class="line">            len_ = len(ans)</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len_-last_len, len_):</span><br><span class="line">                new = copy.deepcopy(ans[j])</span><br><span class="line">                new.append(nums[i])</span><br><span class="line">                ans.append(new)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<p>这是非递归解，还有一种 DFS 解没有写。</p>
-<p><strong>类似题目：</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/29/78-Subsets/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/29/78-Subsets/" itemprop="url">78. Subsets</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-29T00:23:09+08:00">
-                2019-08-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Medium</p>
-<p><a href="https://leetcode.com/problems/subsets/" target="_blank" rel="noopener">https://leetcode.com/problems/subsets/</a></p>
-<p>Given a set of <strong>distinct</strong> integers, <em>nums</em>, return all possible subsets (the power set).</p>
-<p><strong>Note:</strong> The solution set must not contain duplicate subsets.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,2,3]</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [1],</span><br><span class="line">  [2],</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [1,3],</span><br><span class="line">  [2,3],</span><br><span class="line">  [1,2],</span><br><span class="line">  []</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>2019.08.29 独立做出来</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subsets</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> [[]]</span><br><span class="line">        ans = [[]]</span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            len_ = len(ans)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len_):</span><br><span class="line">                new = copy.deepcopy(ans[i])</span><br><span class="line">                new.append(n)</span><br><span class="line">                ans.append(new)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p><strong>类似题目：</strong></p>
-<p>Subsets II<br>Generalized Abbreviation<br>Letter Case Permutation</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/28/238-Product-of-Array-Except-Self/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/28/238-Product-of-Array-Except-Self/" itemprop="url">238. Product of Array Except Self</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-28T23:57:57+08:00">
-                2019-08-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Medium</p>
-<p><a href="https://leetcode.com/problems/product-of-array-except-self/" target="_blank" rel="noopener">https://leetcode.com/problems/product-of-array-except-self/</a></p>
-<p>Given an array <code>nums</code> of <em>n</em> integers where <em>n</em> &gt; 1,  return an array <code>output</code>such that <code>output[i]</code> is equal to the product of all the elements of <code>nums</code>except <code>nums[i]</code>.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:  [1,2,3,4]</span><br><span class="line">Output: [24,12,8,6]</span><br></pre></td></tr></table></figure>
-
-<p><strong>Note:</strong> Please solve it <strong>without division</strong> and in O(<em>n</em>).</p>
-<p><strong>Follow up:</strong><br>Could you solve it with constant space complexity? (The output array <strong>does not</strong> count as extra space for the purpose of space complexity analysis.)</p>
-<p><strong>方法一：</strong></p>
-<p>维护两个数组 left[] 和 right[]，分别表示从左往右扫、从右往左扫的时候，第 i 个元素左边的乘积和右边的乘积。</p>
-<p>时间复杂度 O(n)，空间复杂度 O(n)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">productExceptSelf</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        left = [<span class="number">1</span>]*len(nums)</span><br><span class="line">        right = [<span class="number">1</span>]*len(nums)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)):</span><br><span class="line">            left[i] = left[i<span class="number">-1</span>]*nums[i<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            right[i] = right[i+<span class="number">1</span>]*nums[i+<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">return</span> [left[i]*right[i] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums))]</span><br></pre></td></tr></table></figure>
-
-<p><strong>方法二：</strong></p>
-<p>在方法一的基础上把 left[] 和 right[] 直接合并为返回数组 ans[]，并用一个 temp 变量记录从右往左扫时的乘积。</p>
-<p>时间复杂度 O(n)，空间复杂度 O(1)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">productExceptSelf</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        ans = [<span class="number">1</span>]*len(nums)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)):</span><br><span class="line">            ans[i] = ans[i<span class="number">-1</span>]*nums[i<span class="number">-1</span>]</span><br><span class="line">        temp = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            temp *= nums[i+<span class="number">1</span>]</span><br><span class="line">            ans[i] *= temp</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<p><strong>类似题目：</strong><br>Paint House II</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/26/718-Maximum-Length-of-Repeated-Subarray/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/26/718-Maximum-Length-of-Repeated-Subarray/" itemprop="url">718. Maximum Length of Repeated Subarray</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-26T19:16:15+08:00">
-                2019-08-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Medium</p>
-<p><a href="https://leetcode.com/problems/maximum-length-of-repeated-subarray/" target="_blank" rel="noopener">https://leetcode.com/problems/maximum-length-of-repeated-subarray/</a></p>
-<p>Given two integer arrays <code>A</code> and <code>B</code>, return the maximum length of an subarray that appears in both arrays.</p>
+<p><a href="https://leetcode.com/problems/subarray-sum-equals-k/" target="_blank" rel="noopener">https://leetcode.com/problems/subarray-sum-equals-k/</a></p>
+<p>Given an array of integers and an integer <strong>k</strong>, you need to find the total number of continuous subarrays whose sum equals to <strong>k</strong>.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">A: [1,2,3,2,1]</span><br><span class="line">B: [3,2,1,4,7]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: </span><br><span class="line">The repeated subarray with maximum length is [3, 2, 1].</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:nums = [1,1,1], k = 2</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
 
 <p><strong>Note:</strong></p>
 <ol>
-<li>1 &lt;= len(A), len(B) &lt;= 1000</li>
-<li>0 &lt;= A[i], B[i] &lt; 100</li>
+<li>The length of the array is in range [1, 20,000].</li>
+<li>The range of numbers in the array is [-1000, 1000] and the range of the integer <strong>k</strong> is [-1e7, 1e7].</li>
 </ol>
+<hr>
+<p>2019.9.4 没做出来，参考 <a href="https://zhuanlan.zhihu.com/p/36439368" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/36439368</a> 和 <a href="https://blog.csdn.net/fuxuemingzhu/article/details/82767119" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/82767119</a></p>
 <p><strong>方法：</strong></p>
-<p>方法和 “求两个字符串的最长公共子串” 相同，都是二维 DP</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findLength</span><span class="params">(self, A, B)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :type B: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(A)==<span class="number">0</span> <span class="keyword">or</span> len(B)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        dp = [[<span class="number">0</span>]*len(B) <span class="keyword">for</span> _ <span class="keyword">in</span> range(len(A))]</span><br><span class="line">        max_len = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(A)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(B)):</span><br><span class="line">                <span class="keyword">if</span> A[i]==B[j]:</span><br><span class="line">                    <span class="keyword">if</span> i==<span class="number">0</span> <span class="keyword">or</span> j==<span class="number">0</span>:</span><br><span class="line">                        dp[i][j] = <span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        dp[i][j] = dp[i<span class="number">-1</span>][j<span class="number">-1</span>] + <span class="number">1</span></span><br><span class="line">                max_len = max(max_len, dp[i][j])</span><br><span class="line">        <span class="keyword">return</span> max_len</span><br></pre></td></tr></table></figure>
+<p>由于数据量大，不能用暴力解法。采用 PrefixSum 方法，用一个字典 prefix{} 统计 nums[] 从 index=0 开始到各个位置截至时的前缀和的个数，例如 prefix[5] = 2 表示从 nums[0] 开始的连续数组中有 2 个连续数组的和为 5，这样遍历 nums[] 时计算到当前位置的前缀和 sum_，只要 sum_-k 在 prefix{} 中则表示有若干个从 nums[0] 开始的连续数组和为 sum_-k，那么那些连续数组的后一个元素到当前元素的数组和就为 k。</p>
+<p>时间复杂度 O(n)，空间复杂度 O(n)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subarraySum</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type k: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        sum_ = <span class="number">0</span></span><br><span class="line">        prefix = &#123;&#125;</span><br><span class="line">        prefix[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            sum_ += n</span><br><span class="line">            <span class="keyword">if</span> (sum_-k) <span class="keyword">in</span> prefix:</span><br><span class="line">                cnt += prefix[sum_-k]</span><br><span class="line">            prefix[sum_] = prefix.get(sum_,<span class="number">0</span>)+<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> cnt</span><br></pre></td></tr></table></figure>
 
 <p><strong>类似题目：</strong></p>
-<p>Unique Binary Search Trees II<br>Analyze User Website Visit Pattern<br>Online Majority Element In Subarray</p>
+<p>Continuous Subarray Sum<br>Subarray Product Less Than K<br>Find Pivot Index<br>Subarray Sums Divisible by K</p>
 
           
         
@@ -770,7 +368,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/26/209-Minimum-Size-Subarray-Sum/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/04/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -789,7 +387,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/26/209-Minimum-Size-Subarray-Sum/" itemprop="url">209. Minimum Size Subarray Sum</a></h1>
+                <a class="post-title-link" href="/2019/09/04/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/" itemprop="url">105. Construct Binary Tree from Preorder and Inorder Traversal</a></h1>
         
 
         <div class="post-meta">
@@ -801,8 +399,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-26T19:00:15+08:00">
-                2019-08-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-04T00:34:06+08:00">
+                2019-09-04
               </time>
             
 
@@ -842,19 +440,22 @@
         
           
             <p>Medium</p>
-<p><a href="https://leetcode.com/problems/minimum-size-subarray-sum/" target="_blank" rel="noopener">https://leetcode.com/problems/minimum-size-subarray-sum/</a></p>
-<p>Given an array of <strong>n</strong> positive integers and a positive integer <strong>s</strong>, find the minimal length of a <strong>contiguous</strong> subarray of which the sum ≥ <strong>s</strong>. If there isn’t one, return 0 instead.</p>
-<p><strong>Example:</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s = 7, nums = [2,3,1,2,4,3]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: the subarray [4,3] has the minimal length under the problem constraint.</span><br></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/</a></p>
+<p>Given preorder and inorder traversal of a tree, construct the binary tree.</p>
+<p><strong>Note:</strong><br>You may assume that duplicates do not exist in the tree.</p>
+<p>For example, given</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">preorder = [3,9,20,15,7]</span><br><span class="line">inorder = [9,3,15,20,7]</span><br></pre></td></tr></table></figure>
 
-<p><strong>Follow up:</strong></p>
-<p>If you have figured out the <em>O</em>(<em>n</em>) solution, try coding another solution of which the time complexity is <em>O</em>(<em>n</em> log <em>n</em>). </p>
+<p>Return the following binary tree:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> / \</span><br><span class="line">9  20</span><br><span class="line">  /  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>2019.9.3 独立做出来了</p>
 <p><strong>方法：</strong></p>
-<p>滑动窗口方法，注意判断 min_len 的位置</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minSubArrayLen</span><span class="params">(self, s, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: int</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        sum_ = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            sum_ += n</span><br><span class="line">        <span class="keyword">if</span> sum_&lt;s:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        sum_ = <span class="number">0</span></span><br><span class="line">        l,r = <span class="number">0</span>,<span class="number">0</span></span><br><span class="line">        min_len = len(nums)</span><br><span class="line">        <span class="keyword">while</span> r&lt;len(nums):</span><br><span class="line">            sum_ += nums[r]</span><br><span class="line">            <span class="keyword">while</span> l&lt;=r <span class="keyword">and</span> sum_&gt;=s:</span><br><span class="line">                min_len = min(min_len, r-l+<span class="number">1</span>)</span><br><span class="line">                sum_ -= nums[l]</span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">            r += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> min_len</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">buildTree</span><span class="params">(self, preorder, inorder)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type preorder: List[int]</span></span><br><span class="line"><span class="string">        :type inorder: List[int]</span></span><br><span class="line"><span class="string">        :rtype: TreeNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(preorder)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">        <span class="keyword">if</span> len(preorder)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> TreeNode(preorder[<span class="number">0</span>])</span><br><span class="line">        node = TreeNode(preorder[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(inorder)):</span><br><span class="line">            <span class="keyword">if</span> inorder[i]==preorder[<span class="number">0</span>]:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        node.left = self.buildTree(preorder[<span class="number">1</span>:i+<span class="number">1</span>], inorder[:i])</span><br><span class="line">        node.right = self.buildTree(preorder[i+<span class="number">1</span>:], inorder[i+<span class="number">1</span>:])</span><br><span class="line">        <span class="keyword">return</span> node</span><br></pre></td></tr></table></figure>
 
 <p><strong>类似题目：</strong></p>
-<p>Maximum Size Subarray Sum Equals k<br>Maximum Length of Repeated Subarray</p>
+<p>Construct Binary Tree from Inorder and Postorder Traversal</p>
 
           
         
@@ -903,7 +504,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/25/581-Shortest-Unsorted-Continuous-Subarray/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/02/621-Task-Scheduler/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -922,7 +523,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/25/581-Shortest-Unsorted-Continuous-Subarray/" itemprop="url">581. Shortest Unsorted Continuous Subarray</a></h1>
+                <a class="post-title-link" href="/2019/09/02/621-Task-Scheduler/" itemprop="url">621. Task Scheduler</a></h1>
         
 
         <div class="post-meta">
@@ -934,8 +535,838 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-25T01:23:51+08:00">
-                2019-08-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-02T23:41:08+08:00">
+                2019-09-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/task-scheduler/" target="_blank" rel="noopener">https://leetcode.com/problems/task-scheduler/</a></p>
+<p>Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks. Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.</p>
+<p>However, there is a non-negative cooling interval <strong>n</strong> that means between two <strong>same tasks</strong>, there must be at least n intervals that CPU are doing different tasks or just be idle.</p>
+<p>You need to return the <strong>least</strong> number of intervals the CPU will take to finish all the given tasks.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: tasks = [&quot;A&quot;,&quot;A&quot;,&quot;A&quot;,&quot;B&quot;,&quot;B&quot;,&quot;B&quot;], n = 2</span><br><span class="line">Output: 8</span><br><span class="line">Explanation: A -&gt; B -&gt; idle -&gt; A -&gt; B -&gt; idle -&gt; A -&gt; B.</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note:</strong></p>
+<ol>
+<li>The number of tasks is in the range [1, 10000].</li>
+<li>The integer n is in the range [0, 100].</li>
+</ol>
+<hr>
+<p>2019.9.2 没做出来，参考 <a href="https://www.cnblogs.com/grandyang/p/7098764.html" target="_blank" rel="noopener">https://www.cnblogs.com/grandyang/p/7098764.html</a></p>
+<p><strong>方法：</strong></p>
+<p>首先统计 task[] 中次数最多的 task <strong>M</strong> 的次数 maxTask，然后找出现次数最多的 task 的个数 maxTime。</p>
+<p>每隔 n 个 timestep 就放一个 task <strong>M</strong>，然后其它的 task 填充在间隔里，不足的补 idle，这样一共有 (n+1)*(maxTask-1) 个 timestep，最后还有个小尾巴是剩下的次数最多的 task 的个数 maxTime。</p>
+<p>返回结果时需要和 len(tasks) 比较后取 max 是因为可能各 task 数都比较平均，不用填 idle，反而还多出来了 task。所用时间至少应为 len(tasks)。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">leastInterval</span><span class="params">(self, tasks, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type tasks: List[str]</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        cnt = &#123;&#125;</span><br><span class="line">        maxTask = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> tasks:</span><br><span class="line">            cnt[t] = cnt.get(t,<span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">            maxTask = max(maxTask, cnt[t])</span><br><span class="line">        maxTime = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> cnt:</span><br><span class="line">            <span class="keyword">if</span> cnt[t]==maxTask:</span><br><span class="line">                maxTime += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> max(len(tasks), (n+<span class="number">1</span>)*(maxTask<span class="number">-1</span>)+maxTime)</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>Rearrange String k Distance Apart<br>Reorganize String</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/02/11-Container-With-Most-Water/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/02/11-Container-With-Most-Water/" itemprop="url">11. Container With Most Water</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-02T20:51:03+08:00">
+                2019-09-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/container-with-most-water/" target="_blank" rel="noopener">https://leetcode.com/problems/container-with-most-water/</a></p>
+<p>Given <em>n</em> non-negative integers <em>a1</em>, <em>a2</em>, …, <em>an</em> , where each represents a point at coordinate (<em>i</em>, <em>ai</em>). <em>n</em> vertical lines are drawn such that the two endpoints of line <em>i</em> is at (<em>i</em>, <em>ai</em>) and (<em>i</em>, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.</p>
+<p><strong>Note:</strong> You may not slant the container and <em>n</em> is at least 2.</p>
+<p><img src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/17/question_11.jpg" alt="img"></p>
+<p>The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,8,6,2,5,4,8,3,7]</span><br><span class="line">Output: 49</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>2019.9.2 没做出来，参考 <a href="https://blog.csdn.net/fuxuemingzhu/article/details/82822939" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/82822939</a></p>
+<p><strong>方法：</strong></p>
+<p>这道题我一开始想到了用双指针，但是不知道当左右两挡板等高的时候怎么处理，讲解是说可以随便移动任意一个，一开始没想明白为什么，和同学讨论之后明白了。</p>
+<p>对于目前左、右两个挡板，从两边向中间移动直到相遇。那么只有当向中间移动的挡板遇到了比它更高的板子才“有可能”比之前容量大（因为此时左右挡板间距也缩短了），那么当两挡板一高一矮时，矮版更有可能遇到比它高的，所以向内移动矮版；当两挡板等高时，假设移动左挡板，那么即使左挡板遇到了比它高的板子，只要右挡板不移动，容量也还是会变小，因为容量 = (r-l) * <strong>min</strong>(height[l], height[r])，容器的高仍为右挡板，但宽度（左右挡板间距）减小了，所以容量变小。所以对于两等高挡板来说，只有当两挡板向内移动时都遇到了比它们更高的板子才<strong>“有可能”</strong>比之前容量大，那样的话左右挡板都会向内移动，直到各自遇到比之前高的板子（两个更高的板子还不能是同一个），因此左右哪个板子先向内移动就无所谓了，只是谁先遇到高板子的区别。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxArea</span><span class="params">(self, height)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type height: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        l,r = <span class="number">0</span>,len(height)<span class="number">-1</span></span><br><span class="line">        ans = <span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> l&lt;r:</span><br><span class="line">            ans = max(ans, (r-l)*min(height[l], height[r]))</span><br><span class="line">            <span class="keyword">if</span> height[l]&lt;height[r]:</span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                r -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>Missing Ranges<br>Rotate Array<br>Can Make Palindrome from Substring</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/02/64-Minimum-Path-Sum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/02/64-Minimum-Path-Sum/" itemprop="url">64. Minimum Path Sum</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-02T20:33:18+08:00">
+                2019-09-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/minimum-path-sum/" target="_blank" rel="noopener">https://leetcode.com/problems/minimum-path-sum/</a></p>
+<p>Given a <em>m</em> x <em>n</em> grid filled with non-negative numbers, find a path from top left to bottom right which <em>minimizes</em> the sum of all numbers along its path.</p>
+<p><strong>Note:</strong> You can only move either down or right at any point in time.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line">  [1,3,1],</span><br><span class="line">  [1,5,1],</span><br><span class="line">  [4,2,1]</span><br><span class="line">]</span><br><span class="line">Output: 7</span><br><span class="line">Explanation: Because the path 1→3→1→1→1 minimizes the sum.</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>2019.9.2 独立做出来了</p>
+<p><strong>方法：</strong></p>
+<p>二维 DP</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minPathSum</span><span class="params">(self, grid)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type grid: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(grid)==<span class="number">0</span> <span class="keyword">or</span> len(grid[<span class="number">0</span>])==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        m,n = len(grid), len(grid[<span class="number">0</span>])</span><br><span class="line">        cnt = [[<span class="number">0</span>]*n <span class="keyword">for</span> _ <span class="keyword">in</span> range(m)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> i==<span class="number">0</span> <span class="keyword">and</span> j==<span class="number">0</span>:</span><br><span class="line">                    cnt[i][j] = grid[i][j]</span><br><span class="line">                <span class="keyword">elif</span> i==<span class="number">0</span>:</span><br><span class="line">                    cnt[i][j] = grid[i][j] + cnt[i][j<span class="number">-1</span>]</span><br><span class="line">                <span class="keyword">elif</span> j==<span class="number">0</span>:</span><br><span class="line">                    cnt[i][j] = grid[i][j] + cnt[i<span class="number">-1</span>][j]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    cnt[i][j] = grid[i][j] + min(cnt[i][j<span class="number">-1</span>], cnt[i<span class="number">-1</span>][j])</span><br><span class="line">        <span class="keyword">return</span> cnt[<span class="number">-1</span>][<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>Dungeon Game<br>Cherry Pickup</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/01/62-Unique-Paths/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/01/62-Unique-Paths/" itemprop="url">62. Unique Paths</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-01T23:31:33+08:00">
+                2019-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/unique-paths/" target="_blank" rel="noopener">https://leetcode.com/problems/unique-paths/</a></p>
+<p>A robot is located at the top-left corner of a <em>m</em> x <em>n</em> grid (marked ‘Start’ in the diagram below).</p>
+<p>The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked ‘Finish’ in the diagram below).</p>
+<p>How many possible unique paths are there?</p>
+<p><img src="https://assets.leetcode.com/uploads/2018/10/22/robot_maze.png" alt="img"><br>Above is a 7 x 3 grid. How many possible unique paths are there?</p>
+<p><strong>Note:</strong> <em>m</em> and <em>n</em> will be at most 100.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: m = 3, n = 2</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">From the top-left corner, there are a total of 3 ways to reach the bottom-right corner:</span><br><span class="line">1. Right -&gt; Right -&gt; Down</span><br><span class="line">2. Right -&gt; Down -&gt; Right</span><br><span class="line">3. Down -&gt; Right -&gt; Right</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>2019.9.1 独立做出来了</p>
+<p>之前面依图的时候被问到了这道题，一开始答的是递归统计所有 paths，后来面试官问有没有更简单的，我不会，最后在面试官的反复提示下我终于答出来了“排列组合”的方法，这道题本质上是数学题（我傻了</p>
+<p><strong>方法：</strong></p>
+<p>对于一个 m 行 n 列的棋盘，从左上角走到右下角一定会走 (m-1)+(n-1) 步，其中会向下走 m-1 步，向右走 n-1 步，所以所有可能的 path 数为：<br>$$<br>C_{(m-1)+(n-1)}^{m-1}<br>$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">uniquePaths</span><span class="params">(self, m, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type m: int</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> m==<span class="number">0</span> <span class="keyword">or</span> n==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> m==<span class="number">1</span> <span class="keyword">or</span> n==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        p = m<span class="number">-1</span> + n<span class="number">-1</span></span><br><span class="line">        q = min(n<span class="number">-1</span>, m<span class="number">-1</span>)</span><br><span class="line">        ans = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(q,<span class="number">0</span>,<span class="number">-1</span>):</span><br><span class="line">            ans *= p</span><br><span class="line">            p -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(q,<span class="number">0</span>,<span class="number">-1</span>):</span><br><span class="line">            ans /= i</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>Unique Paths II<br>Dungeon Game</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/01/48-Rotate-Image/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/01/48-Rotate-Image/" itemprop="url">48. Rotate Image</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-01T23:23:12+08:00">
+                2019-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/rotate-image/" target="_blank" rel="noopener">https://leetcode.com/problems/rotate-image/</a></p>
+<p>You are given an <em>n</em> x <em>n</em> 2D matrix representing an image.</p>
+<p>Rotate the image by 90 degrees (clockwise).</p>
+<p><strong>Note:</strong></p>
+<p>You have to rotate the image <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener"><strong>in-place</strong></a>, which means you have to modify the input 2D matrix directly. <strong>DO NOT</strong> allocate another 2D matrix and do the rotation.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Given input matrix = </span><br><span class="line">[</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [4,5,6],</span><br><span class="line">  [7,8,9]</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line">rotate the input matrix in-place such that it becomes:</span><br><span class="line">[</span><br><span class="line">  [7,4,1],</span><br><span class="line">  [8,5,2],</span><br><span class="line">  [9,6,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>2019.9.1 独立做出来了</p>
+<p><strong>方法：</strong></p>
+<p>感觉这道题和打印螺旋数组的题有些类似，重点就是搞清坐标变换（我总是搞混…</p>
+<p>从四周向中心依次旋转每层，对每个坐标 replace 它四边上的值。</p>
+<p>（下图引用自 <a href="https://blog.csdn.net/happyaaaaaaaaaaa/article/details/51563752）" target="_blank" rel="noopener">https://blog.csdn.net/happyaaaaaaaaaaa/article/details/51563752）</a></p>
+<p><img src="D:%5Cgithub%5Cobliviatefjx.github.io%5Cimages%5CCenter" alt="img"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rotate</span><span class="params">(self, matrix)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: None Do not return anything, modify matrix in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(matrix)==<span class="number">0</span> <span class="keyword">or</span> len(matrix[<span class="number">0</span>])==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> matrix</span><br><span class="line">        n = len(matrix)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n/<span class="number">2</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i, n-i<span class="number">-1</span>):</span><br><span class="line">                temp = matrix[i][j]</span><br><span class="line">                matrix[i][j] = matrix[n-j<span class="number">-1</span>][i]</span><br><span class="line">                matrix[n-j<span class="number">-1</span>][i] = matrix[n-i<span class="number">-1</span>][n-j<span class="number">-1</span>]</span><br><span class="line">                matrix[n-i<span class="number">-1</span>][n-j<span class="number">-1</span>] = matrix[j][n-i<span class="number">-1</span>]</span><br><span class="line">                matrix[j][n-i<span class="number">-1</span>] = temp</span><br><span class="line">        <span class="keyword">return</span> matrix</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>Triangle<br>Available Captures for Rook<br>Uncrossed Lines</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/01/39-Combination-Sum/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/01/39-Combination-Sum/" itemprop="url">39. Combination Sum</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-01T18:29:19+08:00">
+                2019-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/combination-sum/" target="_blank" rel="noopener">https://leetcode.com/problems/combination-sum/</a></p>
+<p>Given a <strong>set</strong> of candidate numbers (<code>candidates</code>) <strong>(without duplicates)</strong> and a target number (<code>target</code>), find all unique combinations in <code>candidates</code> where the candidate numbers sums to <code>target</code>.</p>
+<p>The <strong>same</strong> repeated number may be chosen from <code>candidates</code> unlimited number of times.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>All numbers (including <code>target</code>) will be positive integers.</li>
+<li>The solution set must not contain duplicate combinations.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: candidates = [2,3,6,7], target = 7,</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [7],</span><br><span class="line">  [2,2,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>2019.9.1 独立做出来了</p>
+<p><strong>方法：</strong></p>
+<p>采用递归方法。</p>
+<p>先对 candidates[] 排序，然后从大到小判断，需要注意的是由于可以同一个数字多次出现，所以递归时传入的 candidates[] 是 candidates[0:i+1]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">combinationSum</span><span class="params">(self, candidates, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type candidates: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        candidates.sort()</span><br><span class="line">        <span class="keyword">if</span> len(candidates)==<span class="number">0</span> <span class="keyword">or</span> target&lt;candidates[<span class="number">0</span>]:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        ans = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(candidates)<span class="number">-1</span> ,<span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            temp = target - candidates[i]</span><br><span class="line">            <span class="keyword">if</span> temp==<span class="number">0</span>:</span><br><span class="line">                ans.append([candidates[i]])</span><br><span class="line">            <span class="keyword">elif</span> temp&gt;<span class="number">0</span>:</span><br><span class="line">                res = self.combinationSum(candidates[<span class="number">0</span>:i+<span class="number">1</span>], temp)</span><br><span class="line">                <span class="keyword">if</span> len(res)&gt;<span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">for</span> r <span class="keyword">in</span> res:</span><br><span class="line">                        r.append(candidates[i])</span><br><span class="line">                        ans.append(r)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>Combination Sum II<br>Combinations<br>Combination Sum III<br>Factor Combinations<br>Combination Sum IV</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/01/268-Missing-Number/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/01/268-Missing-Number/" itemprop="url">268. Missing Number</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-01T16:30:07+08:00">
+                2019-09-01
               </time>
             
 
@@ -975,557 +1406,160 @@
         
           
             <p>Easy</p>
-<p><a href="https://leetcode.com/problems/shortest-unsorted-continuous-subarray/" target="_blank" rel="noopener">https://leetcode.com/problems/shortest-unsorted-continuous-subarray/</a></p>
-<p>Given an integer array, you need to find one <strong>continuous subarray</strong> that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order, too.</p>
-<p>You need to find the <strong>shortest</strong> such subarray and output its length.</p>
+<p><a href="https://leetcode.com/problems/missing-number/" target="_blank" rel="noopener">https://leetcode.com/problems/missing-number/</a></p>
+<p>Given an array containing <em>n</em> distinct numbers taken from <code>0, 1, 2, ..., n</code>, find the one that is missing from the array.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,0,1]</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note</strong>:<br>Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?</p>
+<hr>
+<p>2019.9.1 没写出来时间复杂度 O(n) 且空间复杂度 O(1) 的解法，参考 <a href="https://blog.csdn.net/fuxuemingzhu/article/details/70332471" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/70332471</a></p>
+<p><strong>方法：</strong></p>
+<p>把数组求和，减去 0~n 的总和就是 missing number</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">missingNumber</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        sum_ = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            sum_ += n</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)+<span class="number">1</span>):</span><br><span class="line">            sum_ -= i</span><br><span class="line">        <span class="keyword">return</span> abs(sum_)</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>First Missing Positive<br>Couples Holding Hands</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/01/645-Set-Mismatch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/01/645-Set-Mismatch/" itemprop="url">645. Set Mismatch</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-01T16:18:22+08:00">
+                2019-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Easy</p>
+<p><a href="https://leetcode.com/problems/set-mismatch/" target="_blank" rel="noopener">https://leetcode.com/problems/set-mismatch/</a></p>
+<p>The set <code>S</code> originally contains numbers from 1 to <code>n</code>. But unfortunately, due to the data error, one of the numbers in the set got duplicated to <strong>another</strong> number in the set, which results in repetition of one number and loss of another number.</p>
+<p>Given an array <code>nums</code> representing the data status of this set after the error. Your task is to firstly find the number occurs twice and then find the number that is missing. Return them in the form of an array.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [2, 6, 4, 8, 10, 9, 15]</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,2,2,4]</span><br><span class="line">Output: [2,3]</span><br></pre></td></tr></table></figure>
 
 <p><strong>Note:</strong></p>
 <ol>
-<li>Then length of the input array is in range [1, 10,000].</li>
-<li>The input array may contain duplicates, so ascending order here means <strong>&lt;=</strong></li>
+<li>The given array size will in the range [2, 10000].</li>
+<li>The given array’s numbers won’t have any order.</li>
 </ol>
+<hr>
+<p>2019.9.1 没做出来，参考 <a href="https://blog.csdn.net/mebiuw/article/details/76277485" target="_blank" rel="noopener">https://blog.csdn.net/mebiuw/article/details/76277485</a></p>
+<p>题目理解错了，“The given array’s numbers won’t have any order.” 我理解成了数组中的数字是乱序的，但是根据答案来看的话应该是有序的，这样就简单很多了。</p>
 <p><strong>方法：</strong></p>
-<p>参考 <a href="https://blog.csdn.net/fuxuemingzhu/article/details/79254454" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/79254454</a></p>
-<p>先排序，然后找排序前后第一个和最后一个不同的数字位置。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findUnsortedSubarray</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        new = sorted(nums)</span><br><span class="line">        l,r = <span class="number">0</span>,len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> l&lt;len(nums)<span class="number">-1</span> <span class="keyword">and</span> nums[l]==new[l]:</span><br><span class="line">            l += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> l==len(nums)<span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> r&gt;<span class="number">0</span> <span class="keyword">and</span> nums[r]==new[r]:</span><br><span class="line">            r -= <span class="number">1</span>  </span><br><span class="line">        <span class="keyword">return</span> r-l+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>注意 nums[] 中的数字是 1<del>n，而 index 是 0</del>n-1，需要减 1。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findErrorNums</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        dup, mis = <span class="number">-1</span>,<span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[abs(nums[i])<span class="number">-1</span>]&lt;<span class="number">0</span>:</span><br><span class="line">                dup = abs(nums[i])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                nums[abs(nums[i])<span class="number">-1</span>] *= <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i]&gt;<span class="number">0</span>:</span><br><span class="line">                mis = i + <span class="number">1</span> </span><br><span class="line">        <span class="keyword">return</span> [dup, mis]</span><br></pre></td></tr></table></figure>
 
 <p><strong>类似题目：</strong></p>
-<p>Construct Binary Tree from Inorder and Postorder Traversal<br>Minimum Size Subarray Sum<br>Beautiful Arrangement II</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/978-Longest-Turbulent-Subarray/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/24/978-Longest-Turbulent-Subarray/" itemprop="url">978. Longest Turbulent Subarray</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-24T22:52:43+08:00">
-                2019-08-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Medium</p>
-<p><a href="https://leetcode.com/problems/longest-turbulent-subarray/" target="_blank" rel="noopener">https://leetcode.com/problems/longest-turbulent-subarray/</a></p>
-<p>A subarray <code>A[i], A[i+1], ..., A[j]</code> of <code>A</code> is said to be <em>turbulent</em> if and only if:</p>
-<ul>
-<li>For <code>i &lt;= k &lt; j</code>, <code>A[k] &gt; A[k+1]</code> when <code>k</code> is odd, and <code>A[k] &lt; A[k+1]</code>when <code>k</code> is even;</li>
-<li><strong>OR</strong>, for <code>i &lt;= k &lt; j</code>, <code>A[k] &gt; A[k+1]</code> when <code>k</code> is even, and <code>A[k] &lt; A[k+1]</code> when <code>k</code> is odd.</li>
-</ul>
-<p>That is, the subarray is turbulent if the comparison sign flips between each adjacent pair of elements in the subarray.</p>
-<p>Return the <strong>length</strong> of a maximum size turbulent subarray of A.</p>
-<p><strong>方法：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxTurbulenceSize</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 1 2 1 2 1 2 1 2 first_small</span></span><br><span class="line">        <span class="comment"># 3 2 3 2 3 2 3 2 first_big</span></span><br><span class="line">        <span class="keyword">if</span> len(A)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> len(A)</span><br><span class="line">        first_small = [<span class="number">1</span>]*len(A)</span><br><span class="line">        first_big = [<span class="number">1</span>]*len(A)</span><br><span class="line">        max_ = <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(A)):</span><br><span class="line">            <span class="keyword">if</span> i%<span class="number">2</span>==<span class="number">0</span>:</span><br><span class="line">                first_small[i] = first_small[i<span class="number">-1</span>]+<span class="number">1</span> <span class="keyword">if</span> A[i]&lt;A[i<span class="number">-1</span>] <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">                first_big[i] = first_big[i<span class="number">-1</span>]+<span class="number">1</span> <span class="keyword">if</span> A[i]&gt;A[i<span class="number">-1</span>] <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                first_small[i] = first_small[i<span class="number">-1</span>]+<span class="number">1</span> <span class="keyword">if</span> A[i]&gt;A[i<span class="number">-1</span>] <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">                first_big[i] = first_big[i<span class="number">-1</span>]+<span class="number">1</span> <span class="keyword">if</span> A[i]&lt;A[i<span class="number">-1</span>] <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">            max_ = max(max_, first_small[i], first_big[i])</span><br><span class="line">        <span class="keyword">return</span> max_</span><br></pre></td></tr></table></figure>
-
-<p><strong>类似题目：</strong></p>
-<p>Freedom Trail<br>Array Partition I<br>Race Car</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/18-4Sum/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/24/18-4Sum/" itemprop="url">18. 4Sum</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-24T19:27:05+08:00">
-                2019-08-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Medium</p>
-<p><a href="https://leetcode.com/problems/4sum/" target="_blank" rel="noopener">https://leetcode.com/problems/4sum/</a></p>
-<p>Given an array <code>nums</code> of <em>n</em> integers and an integer <code>target</code>, are there elements <em>a</em>, <em>b</em>, <em>c</em>, and <em>d</em> in <code>nums</code> such that <em>a</em> + <em>b</em> + <em>c</em> + <em>d</em> = <code>target</code>? Find all unique quadruplets in the array which gives the sum of <code>target</code>.</p>
-<p><strong>Note:</strong></p>
-<p>The solution set must not contain duplicate quadruplets.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Given array nums = [1, 0, -1, 0, -2, 2], and target = 0.</span><br><span class="line"></span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [-1,  0, 0, 1],</span><br><span class="line">  [-2, -1, 1, 2],</span><br><span class="line">  [-2,  0, 0, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p><strong>方法：</strong></p>
-<p>不能照搬 15. 3Sum 的方法。区别在于这道题有一个 target 值不知道正负，所以不能靠判断最前面的数字是否大于 target 来剪枝。另外需要注意这道题的去重方法，是先判断当前四个数字的和然后再去重的，15. 3Sum 是先做了去重然后判断数字和。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fourSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;<span class="number">4</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        nums.sort()</span><br><span class="line">        ans = []</span><br><span class="line">        p = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> p&lt;len(nums)<span class="number">-3</span>:</span><br><span class="line">            q = p+<span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> q&lt;len(nums)<span class="number">-2</span>:</span><br><span class="line">                i, j = q+<span class="number">1</span>, len(nums)<span class="number">-1</span></span><br><span class="line">                <span class="keyword">while</span> i&lt;j:</span><br><span class="line">                    sum_ = nums[p] + nums[q] + nums[i] + nums[j]</span><br><span class="line">                    <span class="keyword">if</span> sum_==target:</span><br><span class="line">                        ans.append([nums[p], nums[q], nums[i], nums[j]])</span><br><span class="line">                        i += <span class="number">1</span></span><br><span class="line">                        j -= <span class="number">1</span></span><br><span class="line">                        <span class="keyword">while</span> i&lt;j <span class="keyword">and</span> nums[i]==nums[i<span class="number">-1</span>]:</span><br><span class="line">                            i += <span class="number">1</span></span><br><span class="line">                        <span class="keyword">while</span> i&lt;j <span class="keyword">and</span> nums[j]==nums[j+<span class="number">1</span>]:</span><br><span class="line">                            j -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">elif</span> sum_&lt;target:</span><br><span class="line">                        i += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        j -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">while</span> q&lt;len(nums)<span class="number">-2</span> <span class="keyword">and</span> nums[q]==nums[q+<span class="number">1</span>]:</span><br><span class="line">                    q += <span class="number">1</span></span><br><span class="line">                q += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> p&lt;len(nums)<span class="number">-3</span> <span class="keyword">and</span> nums[p]==nums[p+<span class="number">1</span>]:</span><br><span class="line">                p += <span class="number">1</span></span><br><span class="line">            p += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<p><strong>类似题目：</strong></p>
-<p>4Sum II</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/16-3Sum-Closest/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/24/16-3Sum-Closest/" itemprop="url">16. 3Sum Closest</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-24T18:26:40+08:00">
-                2019-08-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Medium</p>
-<p><a href="https://leetcode.com/problems/3sum-closest/" target="_blank" rel="noopener">https://leetcode.com/problems/3sum-closest/</a></p>
-<p>Given an array <code>nums</code> of <em>n</em> integers and an integer <code>target</code>, find three integers in <code>nums</code> such that the sum is closest to <code>target</code>. Return the sum of the three integers. You may assume that each input would have exactly one solution.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Given array nums = [-1, 2, 1, -4], and target = 1.</span><br><span class="line"></span><br><span class="line">The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).</span><br></pre></td></tr></table></figure>
-
-<p><strong>方法：</strong></p>
-<p>和 15. 3Sum 相同，只是多了一个保存最小差值的变量。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSumClosest</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;<span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        nums.sort()</span><br><span class="line">        res = float(<span class="string">'inf'</span>)</span><br><span class="line">        ans = []</span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>):</span><br><span class="line">            i,j = t+<span class="number">1</span>, len(nums)<span class="number">-1</span></span><br><span class="line">            <span class="keyword">while</span> i&lt;j:</span><br><span class="line">                sum_ = nums[t] + nums[i] + nums[j]</span><br><span class="line">                <span class="keyword">if</span> abs(sum_-target)&lt;res:</span><br><span class="line">                    res = abs(sum_ - target)</span><br><span class="line">                    ans = [nums[t], nums[i], nums[j]]</span><br><span class="line">                <span class="keyword">if</span> sum_==target:</span><br><span class="line">                    <span class="keyword">return</span> target</span><br><span class="line">                <span class="keyword">elif</span> sum_&lt;target:</span><br><span class="line">                    i += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> sum(ans)</span><br></pre></td></tr></table></figure>
-
-<p><strong>类似题目：</strong></p>
-<p>3sum-smaller</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/15-3Sum/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/24/15-3Sum/" itemprop="url">15. 3Sum</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-24T18:03:10+08:00">
-                2019-08-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Medium</p>
-<p><a href="https://leetcode.com/problems/3sum/" target="_blank" rel="noopener">https://leetcode.com/problems/3sum/</a></p>
-<p>Given an array <code>nums</code> of <em>n</em> integers, are there elements <em>a</em>, <em>b</em>, <em>c</em> in <code>nums</code> such that <em>a</em> + <em>b</em> + <em>c</em> = 0? Find all unique triplets in the array which gives the sum of zero.</p>
-<p><strong>Note:</strong></p>
-<p>The solution set must not contain duplicate triplets.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Given array nums = [-1, 0, 1, 2, -1, -4],</span><br><span class="line"></span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [-1, 0, 1],</span><br><span class="line">  [-1, -1, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>2019.9.7 没做出来，参考 <a href="https://blog.csdn.net/fuxuemingzhu/article/details/83115850" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/83115850</a></p>
-<p><strong>方法：</strong></p>
-<p>数组排序+双指针。</p>
-<p>先排序，然后依次固定每个元素 n，利用双指针在其后的元素中找 sum 为 -n 的两个元素。</p>
-<p>注意代码中的去重操作。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSum</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;<span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        nums.sort()</span><br><span class="line">        ans = []</span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[t]&gt;<span class="number">0</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> t&gt;<span class="number">0</span> <span class="keyword">and</span> nums[t]==nums[t<span class="number">-1</span>]:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            i, j = t+<span class="number">1</span>, len(nums)<span class="number">-1</span></span><br><span class="line">            <span class="keyword">while</span> i&lt;j:</span><br><span class="line">                sum_ = nums[t] + nums[i] + nums[j]</span><br><span class="line">                <span class="keyword">if</span> sum_==<span class="number">0</span>:</span><br><span class="line">                    ans.append([nums[t], nums[i], nums[j]])</span><br><span class="line">                    i += <span class="number">1</span></span><br><span class="line">                    j -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">while</span> i&lt;j <span class="keyword">and</span> nums[i]==nums[i<span class="number">-1</span>]:</span><br><span class="line">                        i += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">while</span> i&lt;j <span class="keyword">and</span> nums[j]==nums[j+<span class="number">1</span>]:</span><br><span class="line">                        j -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> sum_&lt;<span class="number">0</span>:</span><br><span class="line">                    i += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<p><strong>类似题目：</strong></p>
-<p>3Sum Closest<br>4Sum<br>3Sum Smaller</p>
+<p>Integer to English Words<br>Complex Number Multiplication<br>Transform to Chessboard</p>
 
           
         
@@ -1565,7 +1599,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1611,7 +1645,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

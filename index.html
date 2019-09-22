@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/337-House-Robber-III/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/3-Longest-Substring-Without-Repeating-Characters/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/17/337-House-Robber-III/" itemprop="url">337. House Robber III</a></h1>
+                <a class="post-title-link" href="/2019/09/22/3-Longest-Substring-Without-Repeating-Characters/" itemprop="url">3. Longest Substring Without Repeating Characters</a></h1>
         
 
         <div class="post-meta">
@@ -260,8 +260,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-17T23:15:20+08:00">
-                2019-09-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-22T21:18:19+08:00">
+                2019-09-22
               </time>
             
 
@@ -301,23 +301,22 @@
         
           
             <p>Medium</p>
-<p><a href="https://leetcode.com/problems/house-robber-iii/" target="_blank" rel="noopener">https://leetcode.com/problems/house-robber-iii/</a></p>
-<p>The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the “root.” Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that “all houses in this place forms a binary tree”. It will automatically contact the police if two directly-linked houses were broken into on the same night.</p>
-<p>Determine the maximum amount of money the thief can rob tonight without alerting the police.</p>
+<p><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener">https://leetcode.com/problems/longest-substring-without-repeating-characters/</a></p>
+<p>Given a string, find the length of the <strong>longest substring</strong> without repeating characters.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,2,3,null,3,null,1]</span><br><span class="line"></span><br><span class="line">     3</span><br><span class="line">    / \</span><br><span class="line">   2   3</span><br><span class="line">    \   \ </span><br><span class="line">     3   1</span><br><span class="line"></span><br><span class="line">Output: 7 </span><br><span class="line">Explanation: Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abcabcbb&quot;</span><br><span class="line">Output: 3 </span><br><span class="line">Explanation: The answer is &quot;abc&quot;, with the length of 3.</span><br></pre></td></tr></table></figure>
 
 <hr>
-<p>2019.9.16 做出了一半吧，参考 <a href="https://www.cnblogs.com/grandyang/p/5275096.html" target="_blank" rel="noopener">https://www.cnblogs.com/grandyang/p/5275096.html</a></p>
+<p>2019.9.22 做出来了</p>
 <p><strong>方法：</strong></p>
-<p>一开始用纯 DFS，超时。</p>
-<p>后来先遍历节点，把每个节点都存在一个数组中，然后根据序号取节点，还是超时。</p>
-<p>参考博客发现可以把节点存在字典里（我怎么没想到…！</p>
-<p>于是一边遍历一边把遍历过的节点存在字典里，过了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rob</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root.left <span class="keyword">and</span> <span class="keyword">not</span> root.right:</span><br><span class="line">            <span class="keyword">return</span> root.val</span><br><span class="line">        money = &#123;&#125;</span><br><span class="line">        dfs(root, money)</span><br><span class="line">        <span class="keyword">return</span> max(money[root])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(node, money)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node.left <span class="keyword">and</span> <span class="keyword">not</span> node.right:</span><br><span class="line">        money[node] = (node.val, <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    dfs(node.left, money)</span><br><span class="line">    dfs(node.right, money)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node.left:</span><br><span class="line">        money[node] = (node.val+money[node.right][<span class="number">1</span>], max(money[node.right]))</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node.right:</span><br><span class="line">        money[node] = (node.val+money[node.left][<span class="number">1</span>], max(money[node.left]))</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    money[node] = (node.val+money[node.left][<span class="number">1</span>]+money[node.right][<span class="number">1</span>], max(money[node.left])+max(money[node.right]))</span><br><span class="line">    <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+<p>用一个字典 idx{} 记录截止到目前为止出现的字符的 index（如果出现了多次就保留最后一次出现的 index）。</p>
+<p>用两个指针 i,j，i 和 j 之间的字符串是无重复字符的。</p>
+<p>对于每个字符 s[j]，如果 s[j] 已经出现过（在字典里）且出现的位置大于等于 i（idx[s[j]]&gt;=i），那么 s[j] 一定是在 s[i:j+1] 之间的字符串，这时就令 i = idx[s[j]]+1，把重复字符越过去。</p>
+<p>每次都令 j += 1 来扩大右边界。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(s)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> len(s)</span><br><span class="line">        idx = &#123;&#125;</span><br><span class="line">        i,j = <span class="number">0</span>,<span class="number">0</span></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> j&lt;len(s):</span><br><span class="line">            <span class="keyword">if</span> s[j] <span class="keyword">in</span> idx <span class="keyword">and</span> idx[s[j]]&gt;=i:</span><br><span class="line">                i = idx[s[j]]+<span class="number">1</span></span><br><span class="line">            idx[s[j]] = j</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">            ans = max(ans, j-i)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
 
 <p><strong>类似题目：</strong></p>
-<p><a href="https://leetcode.com/problems/house-robber-ii/" target="_blank" rel="noopener">House Robber II</a></p>
+<p>Longest Substring with At Most Two Distinct Characters<br>Longest Substring with At Most K Distinct Characters<br>Subarrays with K Different Integers</p>
 
           
         
@@ -366,7 +365,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/96-Unique-Binary-Search-Trees/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/2-Add-Two-Numbers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -385,7 +384,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/17/96-Unique-Binary-Search-Trees/" itemprop="url">96. Unique Binary Search Trees</a></h1>
+                <a class="post-title-link" href="/2019/09/22/2-Add-Two-Numbers/" itemprop="url">2. Add Two Numbers</a></h1>
         
 
         <div class="post-meta">
@@ -397,8 +396,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-17T13:02:47+08:00">
-                2019-09-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-22T21:02:10+08:00">
+                2019-09-22
               </time>
             
 
@@ -438,19 +437,20 @@
         
           
             <p>Medium</p>
-<p><a href="https://leetcode.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">https://leetcode.com/problems/unique-binary-search-trees/</a></p>
-<p>Given <em>n</em>, how many structurally unique <strong>BST’s</strong> (binary search trees) that store values 1 … <em>n</em>?</p>
+<p><a href="https://leetcode.com/problems/add-two-numbers/" target="_blank" rel="noopener">https://leetcode.com/problems/add-two-numbers/</a></p>
+<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong> and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
 <p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: 3</span><br><span class="line">Output: 5</span><br><span class="line">Explanation:</span><br><span class="line">Given n = 3, there are a total of 5 unique BST&apos;s:</span><br><span class="line"></span><br><span class="line">   1         3     3      2      1</span><br><span class="line">    \       /     /      / \      \</span><br><span class="line">     3     2     1      1   3      2</span><br><span class="line">    /     /       \                 \</span><br><span class="line">   2     1         2                 3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</span><br><span class="line">Output: 7 -&gt; 0 -&gt; 8</span><br><span class="line">Explanation: 342 + 465 = 807.</span><br></pre></td></tr></table></figure>
 
 <hr>
-<p>2019.9.17 做出来了</p>
+<p>2019.9.22 做出来了</p>
 <p><strong>方法：</strong></p>
-<p>卡特兰数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numTrees</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> n&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        dp = [<span class="number">0</span>]*(n+<span class="number">1</span>)</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,n+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</span><br><span class="line">                dp[i] += dp[j]*dp[i-j<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<p>依次从前往后遍历 l1 和 l2 的节点，同时用一个变量 flg 表示上一次的进位值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">addTwoNumbers</span><span class="params">(self, l1, l2)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type l1: ListNode</span></span><br><span class="line"><span class="string">        :type l2: ListNode</span></span><br><span class="line"><span class="string">        :rtype: ListNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> l1 <span class="keyword">or</span> <span class="keyword">not</span> l2:</span><br><span class="line">            <span class="keyword">return</span> l1 <span class="keyword">if</span> <span class="keyword">not</span> l2 <span class="keyword">else</span> l2</span><br><span class="line">        head = ListNode(<span class="number">0</span>)</span><br><span class="line">        p,q = l1,l2</span><br><span class="line">        flg = <span class="number">0</span></span><br><span class="line">        cur = head</span><br><span class="line">        <span class="keyword">while</span> p <span class="keyword">and</span> q:</span><br><span class="line">            val = (flg+p.val+q.val)%<span class="number">10</span></span><br><span class="line">            new = ListNode(val)</span><br><span class="line">            cur.next = new</span><br><span class="line">            flg = (flg+p.val+q.val)/<span class="number">10</span></span><br><span class="line">            p = p.next</span><br><span class="line">            q= q.next</span><br><span class="line">            cur = cur.next</span><br><span class="line">        <span class="keyword">while</span> p:</span><br><span class="line">            val = (flg+p.val)%<span class="number">10</span></span><br><span class="line">            new = ListNode(val)</span><br><span class="line">            cur.next = new</span><br><span class="line">            flg = (flg+p.val)/<span class="number">10</span></span><br><span class="line">            p = p.next</span><br><span class="line">            cur = cur.next</span><br><span class="line">        <span class="keyword">while</span> q:</span><br><span class="line">            val = (flg+q.val)%<span class="number">10</span></span><br><span class="line">            new = ListNode(val)</span><br><span class="line">            cur.next = new</span><br><span class="line">            flg = (flg+q.val)/<span class="number">10</span></span><br><span class="line">            q = q.next</span><br><span class="line">            cur = cur.next</span><br><span class="line">        <span class="keyword">if</span> flg&gt;<span class="number">0</span>:</span><br><span class="line">            new = ListNode(flg)</span><br><span class="line">            cur.next = new</span><br><span class="line">        <span class="keyword">return</span> head.next</span><br></pre></td></tr></table></figure>
 
 <p><strong>类似题目：</strong></p>
-<p><a href="https://leetcode.com/problems/unique-binary-search-trees-ii/" target="_blank" rel="noopener">Unique Binary Search Trees II</a></p>
+<p>Multiply Strings<br>Add Binary<br>Sum of Two Integers<br>Add Strings<br>Add Two Numbers II<br>Add to Array-Form of Integer</p>
 
           
         
@@ -499,7 +499,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/49-Group-Anagrams/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/19-Remove-Nth-Node-From-End-of-List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -518,7 +518,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/16/49-Group-Anagrams/" itemprop="url">49. Group Anagrams</a></h1>
+                <a class="post-title-link" href="/2019/09/22/19-Remove-Nth-Node-From-End-of-List/" itemprop="url">19. Remove Nth Node From End of List</a></h1>
         
 
         <div class="post-meta">
@@ -530,8 +530,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T00:30:28+08:00">
-                2019-09-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-22T20:43:45+08:00">
+                2019-09-22
               </time>
             
 
@@ -571,38 +571,582 @@
         
           
             <p>Medium</p>
-<p><a href="https://leetcode.com/problems/group-anagrams/" target="_blank" rel="noopener">https://leetcode.com/problems/group-anagrams/</a></p>
-<p>Given an array of strings, group anagrams together.</p>
+<p><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener">https://leetcode.com/problems/remove-nth-node-from-end-of-list/</a></p>
+<p>Given a linked list, remove the <em>n</em>-th node from the end of list and return its head.</p>
 <p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;],</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;],</span><br><span class="line">  [&quot;nat&quot;,&quot;tan&quot;],</span><br><span class="line">  [&quot;bat&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Given linked list: 1-&gt;2-&gt;3-&gt;4-&gt;5, and n = 2.</span><br><span class="line"></span><br><span class="line">After removing the second node from the end, the linked list becomes 1-&gt;2-&gt;3-&gt;5.</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note:</strong></p>
+<p>Given <em>n</em> will always be valid.</p>
+<p><strong>Follow up:</strong></p>
+<p>Could you do this in one pass?</p>
+<hr>
+<p>2019.9.22 做出来了</p>
+<p><strong>方法：</strong></p>
+<p>快慢指针。</p>
+<p>P.S. 下面这坨代码写得太丑了，看到<a href="https://blog.csdn.net/fuxuemingzhu/article/details/80786149" target="_blank" rel="noopener">有人写的挺简洁的</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeNthFromEnd</span><span class="params">(self, head, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type head: ListNode</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: ListNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head:</span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line">        fast = head</span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i&lt;n <span class="keyword">and</span> fast:</span><br><span class="line">            fast = fast.next</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> i&lt;n:</span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> fast:</span><br><span class="line">            <span class="keyword">return</span> head.next</span><br><span class="line">        slow = head</span><br><span class="line">        <span class="keyword">while</span> fast <span class="keyword">and</span> fast.next:</span><br><span class="line">            fast = fast.next</span><br><span class="line">            slow = slow.next</span><br><span class="line">        temp = slow.next</span><br><span class="line">        slow.next = temp.next</span><br><span class="line">        <span class="keyword">return</span> head</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>Partition List<br>Reverse String<br>Interval List Intersections</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/139-Word-Break/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/22/139-Word-Break/" itemprop="url">139. Word Break</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-22T20:22:49+08:00">
+                2019-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/word-break/" target="_blank" rel="noopener">https://leetcode.com/problems/word-break/</a></p>
+<p>Given a <strong>non-empty</strong> string <em>s</em> and a dictionary <em>wordDict</em> containing a list of <strong>non-empty</strong> words, determine if <em>s</em> can be segmented into a space-separated sequence of one or more dictionary words.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>The same word in the dictionary may be reused multiple times in the segmentation.</li>
+<li>You may assume the dictionary does not contain duplicate words.</li>
+</ul>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;leetcode&quot;, wordDict = [&quot;leet&quot;, &quot;code&quot;]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Return true because &quot;leetcode&quot; can be segmented as &quot;leet code&quot;.</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>2019.9.22 没做出来，参考 <a href="https://blog.csdn.net/fuxuemingzhu/article/details/79368360" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/79368360</a></p>
+<p>一开始用了 DFS 做，能过一部分但是还是会超时。</p>
+<p>这题我真是万万没想到用 DP 做…曾经有过一闪念，但是觉得没法做就没接着想了。</p>
+<p><strong>方法：</strong></p>
+<p>思路：如果 s 能被拆分，则存在 s[:i] 能被拆分且 s[i:] 在字典中。因此得到 s[:i] 与 s 的递推关系式。</p>
+<p>新建一个长度为 len(s)+1 的数组 dp[]，其中 dp[i] 表示字符串 s[:i] 能否被拆分。</p>
+<p>初始化 dp[0] = True。</p>
+<p>采用两重循环，外层循环中的 i 是待判断的 dp[i] 的 index，然后在内层循环里用 j 遍历 0~i-1 来分别尝试拆分 s[:i]。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wordBreak</span><span class="params">(self, s, wordDict)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :type wordDict: List[str]</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(wordDict)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        dp = [<span class="literal">False</span>]*(len(s)+<span class="number">1</span>)</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(s)+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</span><br><span class="line">                <span class="keyword">if</span> dp[j] <span class="keyword">and</span> s[j:i] <span class="keyword">in</span> wordDict:</span><br><span class="line">                    dp[i] = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p><a href="https://leetcode.com/problems/word-break-ii/" target="_blank" rel="noopener">Word Break II</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/148-Sort-List/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/22/148-Sort-List/" itemprop="url">148. Sort List</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-22T19:47:29+08:00">
+                2019-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/sort-list/" target="_blank" rel="noopener">https://leetcode.com/problems/sort-list/</a></p>
+<p>Sort a linked list in <em>O</em>(<em>n</em> log <em>n</em>) time using constant space complexity.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 4-&gt;2-&gt;1-&gt;3</span><br><span class="line">Output: 1-&gt;2-&gt;3-&gt;4</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>2019.9.22 做出来了</p>
+<p><strong>方法：</strong></p>
+<p>链表的归并排序</p>
+<p>思路比较简单，但是找链表中点的代码那里还是要注意一点，一不小心就写 bug 了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortList</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type head: ListNode</span></span><br><span class="line"><span class="string">        :rtype: ListNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head:</span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line">        ans = mergeSort(head)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mergeSort</span><span class="params">(node)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node <span class="keyword">or</span> <span class="keyword">not</span> node.next:</span><br><span class="line">        <span class="keyword">return</span> node</span><br><span class="line">    slow,fast = node,node.next</span><br><span class="line">    <span class="keyword">while</span> fast <span class="keyword">and</span> fast.next:</span><br><span class="line">        fast = fast.next.next</span><br><span class="line">        slow = slow.next</span><br><span class="line">    left = node</span><br><span class="line">    right = slow.next</span><br><span class="line">    slow.next = <span class="literal">None</span></span><br><span class="line">    new_l = mergeSort(left)</span><br><span class="line">    new_r = mergeSort(right)</span><br><span class="line">    <span class="keyword">return</span> merge(new_l,new_r)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(l,r)</span>:</span></span><br><span class="line">    head = ListNode(<span class="number">0</span>)</span><br><span class="line">    cur = head</span><br><span class="line">    <span class="keyword">while</span> l <span class="keyword">and</span> r:</span><br><span class="line">        <span class="keyword">if</span> l.val&lt;r.val:</span><br><span class="line">            cur.next = l</span><br><span class="line">            l = l.next</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            cur.next = r</span><br><span class="line">            r = r.next</span><br><span class="line">        cur = cur.next</span><br><span class="line">        cur.next = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">if</span> l:</span><br><span class="line">        cur.next = l</span><br><span class="line">    <span class="keyword">if</span> r:</span><br><span class="line">        cur.next = r</span><br><span class="line">    <span class="keyword">return</span> head.next</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p><a href="https://leetcode.com/problems/insertion-sort-list/" target="_blank" rel="noopener">Insertion Sort List</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/207-Course-Schedule/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/22/207-Course-Schedule/" itemprop="url">207. Course Schedule</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-22T17:58:11+08:00">
+                2019-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/course-schedule/" target="_blank" rel="noopener">https://leetcode.com/problems/course-schedule/</a></p>
+<p>There are a total of <em>n</em> courses you have to take, labeled from <code>0</code> to <code>n-1</code>.</p>
+<p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: <code>[0,1]</code></p>
+<p>Given the total number of courses and a list of prerequisite <strong>pairs</strong>, is it possible for you to finish all courses?</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: 2, [[1,0]] </span><br><span class="line">Output: true</span><br><span class="line">Explanation: There are a total of 2 courses to take. </span><br><span class="line">             To take course 1 you should have finished course 0. So it is possible.</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note:</strong></p>
+<ol>
+<li>The input prerequisites is a graph represented by <strong>a list of edges</strong>, not adjacency matrices. Read more about <a href="https://www.khanacademy.org/computing/computer-science/algorithms/graph-representation/a/representing-graphs" target="_blank" rel="noopener">how a graph is represented</a>.</li>
+<li>You may assume that there are no duplicate edges in the input prerequisites.</li>
+</ol>
+<hr>
+<p>2019.9.22 做出来了</p>
+<p>其实严格来说不算是独立做出来的，因为昨天正好有一个笔试题是有向图的拓扑排序，所以才能写出来，参考了 </p>
+<p><a href="https://blog.csdn.net/lanchunhui/article/details/50957608" target="_blank" rel="noopener">https://blog.csdn.net/lanchunhui/article/details/50957608</a></p>
+<p><strong>方法：</strong></p>
+<p>有向图的拓扑排序</p>
+<p>注意构建有向图时，字典的 key 是有向图箭头的起始点，value 是箭头的终点，也就是说 key 是前提，value 是依赖 key 的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canFinish</span><span class="params">(self, numCourses, prerequisites)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type numCourses: int</span></span><br><span class="line"><span class="string">        :type prerequisites: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> numCourses==<span class="number">0</span> <span class="keyword">or</span> len(prerequisites)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        G = dict((i,[]) <span class="keyword">for</span> i <span class="keyword">in</span> range(numCourses))</span><br><span class="line">        <span class="keyword">for</span> p,q <span class="keyword">in</span> prerequisites:</span><br><span class="line">            G[q].append(p)</span><br><span class="line">        ans = topSort(G)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span> <span class="keyword">if</span> len(ans)==numCourses <span class="keyword">else</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">topSort</span><span class="params">(G)</span>:</span></span><br><span class="line">    in_degree = dict((u,<span class="number">0</span>) <span class="keyword">for</span> u <span class="keyword">in</span> G)</span><br><span class="line">    <span class="keyword">for</span> u <span class="keyword">in</span> G:</span><br><span class="line">        <span class="keyword">for</span> v <span class="keyword">in</span> G[u]:</span><br><span class="line">            in_degree[v] += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    Q = [u <span class="keyword">for</span> u <span class="keyword">in</span> G <span class="keyword">if</span> in_degree[u]==<span class="number">0</span>]</span><br><span class="line">    S = []</span><br><span class="line">    <span class="keyword">while</span> Q:</span><br><span class="line">        u = Q.pop()</span><br><span class="line">        S.append(u)</span><br><span class="line">        <span class="keyword">for</span> v <span class="keyword">in</span> G[u]:</span><br><span class="line">            in_degree[v] -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> in_degree[v]==<span class="number">0</span>:</span><br><span class="line">                Q.append(v)</span><br><span class="line">    <span class="keyword">return</span> S</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>Course Schedule II<br>Graph Valid Tree<br>Minimum Height Trees<br>Course Schedule III</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/208-Implement-Trie-Prefix-Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/22/208-Implement-Trie-Prefix-Tree/" itemprop="url">208. Implement Trie (Prefix Tree)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-22T17:39:46+08:00">
+                2019-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/implement-trie-prefix-tree/" target="_blank" rel="noopener">https://leetcode.com/problems/implement-trie-prefix-tree/</a></p>
+<p>Implement a trie with <code>insert</code>, <code>search</code>, and <code>startsWith</code> methods.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Trie trie = new Trie();</span><br><span class="line"></span><br><span class="line">trie.insert(&quot;apple&quot;);</span><br><span class="line">trie.search(&quot;apple&quot;);   // returns true</span><br><span class="line">trie.search(&quot;app&quot;);     // returns false</span><br><span class="line">trie.startsWith(&quot;app&quot;); // returns true</span><br><span class="line">trie.insert(&quot;app&quot;);   </span><br><span class="line">trie.search(&quot;app&quot;);     // returns true</span><br></pre></td></tr></table></figure>
 
 <p><strong>Note:</strong></p>
 <ul>
-<li>All inputs will be in lowercase.</li>
-<li>The order of your output does not matter</li>
+<li>You may assume that all inputs are consist of lowercase letters <code>a-z</code>.</li>
+<li>All inputs are guaranteed to be non-empty strings.</li>
 </ul>
 <hr>
-<p>2019.9.15 独立做出来了（感觉我现在总想一蹴而就地写出最优解，但往往想不出来…就迟迟不写，要改正鸭</p>
-<p>虽然做出来了，但是这道题之前应该是参考别人的方法提交过，Runtime = 76 ms, Memory = 15.8 MB，但是我没印象了，就自己想的方法。</p>
-<p>以下三种方法从方法一到方法三依次做了速度优化。</p>
-<p><strong>方法一：</strong></p>
-<p>由于题目限定了字符串都是小写英文字母，因此可以把字符映射到长为 26 的数字串中，数字串每位对应相应小写字母的个数。把这个数字串作为 key 用于字典中，value 为数字串为 key 的字符串数组。</p>
-<p>（很慢）Runtime = 236 ms, Memory = 15.1 MB</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">groupAnagrams</span><span class="params">(self, strs)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type strs: List[str]</span></span><br><span class="line"><span class="string">        :rtype: List[List[str]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(strs)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        <span class="keyword">if</span> len(strs)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> [strs]</span><br><span class="line">        ans = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> strs:</span><br><span class="line">            num = str2num(s)</span><br><span class="line">            <span class="keyword">if</span> num <span class="keyword">not</span> <span class="keyword">in</span> ans:</span><br><span class="line">                ans[num] = [s]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ans[num].append(s)</span><br><span class="line">        <span class="keyword">return</span> ans.values()</span><br><span class="line">        </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str2num</span><span class="params">(s)</span>:</span></span><br><span class="line">    cnt = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">        cnt[c] = cnt.get(c, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">    ans = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">26</span>):</span><br><span class="line">        ans += str(cnt.get(chr(ord(<span class="string">'a'</span>)+i), <span class="number">0</span>))</span><br><span class="line">    <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<p><strong>方法二：</strong></p>
-<p>同样的思想，但是把 str2num() 函数改为了由字符串转换为字符升序的字符串（即标准字符串）函数，这样不用每次都统计 26 个字母。</p>
-<p>（稍快）Runtime = 112 ms, Memory = 15.1 MB</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">groupAnagrams</span><span class="params">(self, strs)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type strs: List[str]</span></span><br><span class="line"><span class="string">        :rtype: List[List[str]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(strs)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        <span class="keyword">if</span> len(strs)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> [strs]</span><br><span class="line">        ans = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> strs:</span><br><span class="line">            num = sort_str(s)</span><br><span class="line">            <span class="keyword">if</span> num <span class="keyword">not</span> <span class="keyword">in</span> ans:</span><br><span class="line">                ans[num] = [s]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ans[num].append(s)</span><br><span class="line">        <span class="keyword">return</span> ans.values()</span><br><span class="line">        </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sort_str</span><span class="params">(s)</span>:</span></span><br><span class="line">    num = sorted(map(ord, s))</span><br><span class="line">    num = map(chr, num)</span><br><span class="line">    ans = <span class="string">''</span>.join(num)</span><br><span class="line">    <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<p><strong>方法三：</strong></p>
-<p>思路和方法二完全一样，只是修改了 sort_str() 函数里对字符串中字符排序的代码，直接对字符排序，而不用先映射到 ASCII 码再映射回来。</p>
-<p>常规写法：<strong>对字符串 s 中字符排序：ans = ‘’.join(sorted(list(s)))</strong></p>
-<p>（最快）Runtime = 84 ms, Memory = 15.5 MB</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">groupAnagrams</span><span class="params">(self, strs)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type strs: List[str]</span></span><br><span class="line"><span class="string">        :rtype: List[List[str]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(strs)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        <span class="keyword">if</span> len(strs)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> [strs]</span><br><span class="line">        ans = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> strs:</span><br><span class="line">            num = sort_str(s)</span><br><span class="line">            <span class="keyword">if</span> num <span class="keyword">not</span> <span class="keyword">in</span> ans:</span><br><span class="line">                ans[num] = [s]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ans[num].append(s)</span><br><span class="line">        <span class="keyword">return</span> ans.values()</span><br><span class="line">        </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sort_str</span><span class="params">(s)</span>:</span></span><br><span class="line">    num = sorted(list(s))</span><br><span class="line">    ans = <span class="string">''</span>.join(num)</span><br><span class="line">    <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<p>2019.9.22 做出来了，正好前两天笔试考到了字典树</p>
+<p><strong>方法：</strong></p>
+<p>说是树，但是每个“节点”没有明显的左右儿子啥的，每个节点就是一个字典，字典的 key 是字母，对应的 value 也是字典（表示下一个字母），同时如果在该节点为止时形成了一个单词，那么需要在该节点的字典中加入一个终止符 self.end=-1。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Trie</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Initialize your data structure here.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.root = &#123;&#125;</span><br><span class="line">        self.end = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, word)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Inserts a word into the trie.</span></span><br><span class="line"><span class="string">        :type word: str</span></span><br><span class="line"><span class="string">        :rtype: None</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        cur = self.root</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> word:</span><br><span class="line">            <span class="keyword">if</span> c <span class="keyword">not</span> <span class="keyword">in</span> cur:</span><br><span class="line">                cur[c] = &#123;&#125;</span><br><span class="line">            cur = cur[c]</span><br><span class="line">        cur[self.end] = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, word)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Returns if the word is in the trie.</span></span><br><span class="line"><span class="string">        :type word: str</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        cur = self.root</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> word:</span><br><span class="line">            <span class="keyword">if</span> c <span class="keyword">not</span> <span class="keyword">in</span> cur:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            cur = cur[c]</span><br><span class="line">        <span class="keyword">if</span> self.end <span class="keyword">not</span> <span class="keyword">in</span> cur:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span>   </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">startsWith</span><span class="params">(self, prefix)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Returns if there is any word in the trie that starts with the given prefix.</span></span><br><span class="line"><span class="string">        :type prefix: str</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        cur = self.root</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> prefix:</span><br><span class="line">            <span class="keyword">if</span> c <span class="keyword">not</span> <span class="keyword">in</span> cur:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            cur = cur[c]</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>类似题目：</strong></p>
-<p>Valid Anagram<br>Group Shifted Strings</p>
+<p>Add and Search Word - Data structure design<br>Design Search Autocomplete System<br>Replace Words<br>Implement Magic Dictionary</p>
 
           
         
@@ -651,7 +1195,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/215-Kth-Largest-Element-in-an-Array/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/300-Longest-Increasing-Subsequence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -670,7 +1214,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/16/215-Kth-Largest-Element-in-an-Array/" itemprop="url">215. Kth Largest Element in an Array</a></h1>
+                <a class="post-title-link" href="/2019/09/22/300-Longest-Increasing-Subsequence/" itemprop="url">300. Longest Increasing Subsequence</a></h1>
         
 
         <div class="post-meta">
@@ -682,8 +1226,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T00:04:54+08:00">
-                2019-09-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-22T17:16:14+08:00">
+                2019-09-22
               </time>
             
 
@@ -723,444 +1267,171 @@
         
           
             <p>Medium</p>
-<p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">https://leetcode.com/problems/kth-largest-element-in-an-array/</a></p>
-<p>Find the <strong>k</strong>th largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,2,1,5,6,4] and k = 2</span><br><span class="line">Output: 5</span><br></pre></td></tr></table></figure>
-
-<p><strong>Note:</strong><br>You may assume k is always valid, 1 ≤ k ≤ array’s length</p>
-<hr>
-<p>2019.9.16 没做出来，参考之前写的 TopKth.py 写的，还是没有完全掌握啊唉</p>
-<p><strong>方法：</strong></p>
-<p>快排</p>
-<p>一开始正确写出了 search(arr, l, r) 函数（也就是通常的 partition() 函数），但是写错了主函数里的循环。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findKthLargest</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type k: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">        l,r = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        idx = search(nums, l, r)</span><br><span class="line">        <span class="keyword">while</span> idx!=len(nums)-k:</span><br><span class="line">            <span class="keyword">if</span> idx&gt;len(nums)-k:</span><br><span class="line">                r = idx<span class="number">-1</span></span><br><span class="line">                idx = search(nums, l, r)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                l = idx+<span class="number">1</span></span><br><span class="line">                idx = search(nums, l, r)</span><br><span class="line">        <span class="keyword">return</span> nums[len(nums)-k]</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(arr, l, r)</span>:</span></span><br><span class="line">    p = arr[l]</span><br><span class="line">    <span class="keyword">while</span> l&lt;r:</span><br><span class="line">        <span class="keyword">while</span> l&lt;r <span class="keyword">and</span> arr[r]&gt;=p:</span><br><span class="line">            r -= <span class="number">1</span></span><br><span class="line">        arr[l] = arr[r]</span><br><span class="line">        <span class="keyword">while</span> l&lt;r <span class="keyword">and</span> arr[l]&lt;=p:</span><br><span class="line">            l += <span class="number">1</span></span><br><span class="line">        arr[r] = arr[l]</span><br><span class="line">    arr[l] = p</span><br><span class="line">    <span class="keyword">return</span> l</span><br></pre></td></tr></table></figure>
-
-<p><strong>类似题目：</strong></p>
-<p>Wiggle Sort II<br>Third Maximum Number<br>Kth Largest Element in a Stream<br>K Closest Points to Origin</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/647-Palindromic-Substrings/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/15/647-Palindromic-Substrings/" itemprop="url">647. Palindromic Substrings</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-15T23:14:03+08:00">
-                2019-09-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Medium</p>
-<p><a href="https://leetcode.com/problems/palindromic-substrings/" target="_blank" rel="noopener">https://leetcode.com/problems/palindromic-substrings/</a></p>
-<p>Given a string, your task is to count how many palindromic substrings in this string.</p>
-<p>The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abc&quot;</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: Three palindromic strings: &quot;a&quot;, &quot;b&quot;, &quot;c&quot;.</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>2019.9.15 知道用马拉车方法做，照抄的第 5 题的马拉车算法，但是没能自己写出马拉车算法。</p>
-<p><strong>方法：</strong></p>
-<p>马拉车算法好厉害！</p>
-<p>注意 ans += p[i]/2 （而不是 ans += p[i]）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countSubstrings</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(s)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> len(s)</span><br><span class="line">        t = <span class="string">'@#'</span></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">            t += c</span><br><span class="line">            t += <span class="string">'#'</span></span><br><span class="line">        p = [<span class="number">0</span>]*len(t)</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        mx = <span class="number">0</span></span><br><span class="line">        idx = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(t)):</span><br><span class="line">            <span class="keyword">if</span> mx&gt;i:</span><br><span class="line">                p[i] = min(p[<span class="number">2</span>*idx-i], mx-i)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                p[i] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i-p[i]&gt;=<span class="number">0</span> <span class="keyword">and</span> i+p[i]&lt;len(t) <span class="keyword">and</span> t[i+p[i]]==t[i-p[i]]:</span><br><span class="line">                p[i] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> mx&lt;i+p[i]:</span><br><span class="line">                mx = i + p[i]</span><br><span class="line">                idx = i</span><br><span class="line">            ans += p[i]/<span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<p><strong>类似题目：</strong></p>
-<p>Longest Palindromic Substring<br>Longest Palindromic Subsequence<br>Palindromic Substrings</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/14/4-Median-of-Two-Sorted-Arrays/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/14/4-Median-of-Two-Sorted-Arrays/" itemprop="url">4. Median of Two Sorted Arrays</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-14T19:26:06+08:00">
-                2019-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Hard</p>
-<p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">https://leetcode.com/problems/median-of-two-sorted-arrays/</a></p>
-<p>There are two sorted arrays <strong>nums1</strong> and <strong>nums2</strong> of size m and n respectively.</p>
-<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
-<p>You may assume <strong>nums1</strong> and <strong>nums2</strong> cannot be both empty.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nums1 = [1, 3]</span><br><span class="line">nums2 = [2]</span><br><span class="line"></span><br><span class="line">The median is 2.0</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>2019.9.14 没做出来，参考 <a href="https://www.cnblogs.com/zuoyuan/p/3759682.html、https://www.cnblogs.com/grandyang/p/4465932.html" target="_blank" rel="noopener">https://www.cnblogs.com/zuoyuan/p/3759682.html、https://www.cnblogs.com/grandyang/p/4465932.html</a></p>
-<p><strong>方法：</strong></p>
-<p>想到了用二分查找，但是没想到是<strong>对 k 二分</strong>。</p>
-<p>这道题的关键是把 <strong>“找 nums1 与 nums2 的中位数”</strong> 的问题转化为用一个 getKth(nums1, nums2, k) 函数 <strong>“找 nums1 与 nums2 中第 k (1&lt;=k&lt;=len(nums1)+len(nums2)) 大的数”</strong>（当然我没想到 <em>(:з」∠)\</em></p>
-<ol>
-<li>对于 getKth(nums1, nums2, k)，需要确保 len(nums1)&lt;=len(nums2)，若不满足的话则 return getKth(nums2, nums1, k)</li>
-<li>由于上一条确保了 len(nums1)&lt;=len(nums2)，所以如果 len(nums1)==0 的话则直接返回 nums2[k-1]。</li>
-<li>如果 len(nums1) 与 len(nums2) 都大于 0 且 k==1，那么返回 min(nums1[0], nums2[0])。</li>
-</ol>
-<p>（接下来是重头戏：对 k 二分）</p>
-<ol start="4">
-<li><p>比较 nums1[k/2-1] 与 nums2[k/2-1] 的大小：</p>
-<p>1）如果 nums1[k/2-1] &lt;= nums2[k/2-1]，那么 <strong>nums1[k/2-1]</strong> 在 nums1 中是第 k/2 大的数，同时在 nums2 中最多是第 k/2 -1 大的数（因为 nums1[k/2-1] 小于 nums2 中第 k/2 大的数：nums2[k/2-1]），所以 nums1[k/2-1] 在 nums1 与 nums2 的总数组中<strong>最多是第 (k/2 + k/2 -1) = k-1 大的数</strong>，所以 nums1 与 nums2 中第 k 大的数必然不在 nums1[:k/2] 中，因此可以继续从 nums1[k/2:] 与 nums2 中找第 k/2 大的数。</p>
-<p>2）如果 nums1[k/2-1] &gt; nums2[k/2-1]，与1) 同理，继续从 nums1 与 nums2[k/2:] 中找第 k/2 大的数。</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMedianSortedArrays</span><span class="params">(self, nums1, nums2)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums1: List[int]</span></span><br><span class="line"><span class="string">        :type nums2: List[int]</span></span><br><span class="line"><span class="string">        :rtype: float</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        len1, len2 = len(nums1), len(nums2)</span><br><span class="line">        <span class="keyword">if</span> (len1+len2)%<span class="number">2</span>==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> getKth(nums1, nums2, (len1+len2+<span class="number">1</span>)/<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> (getKth(nums1, nums2, (len1+len2+<span class="number">1</span>)/<span class="number">2</span>) + getKth(nums1, nums2, (len1+len2+<span class="number">2</span>)/<span class="number">2</span>)) / <span class="number">2.0</span></span><br><span class="line">        </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getKth</span><span class="params">(nums1, nums2, k)</span>:</span></span><br><span class="line">    len1, len2 = len(nums1), len(nums2)</span><br><span class="line">    <span class="keyword">if</span> len1&gt;len2:</span><br><span class="line">        <span class="keyword">return</span> getKth(nums2, nums1, k)</span><br><span class="line">    <span class="keyword">if</span> len1==<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> nums2[k<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">if</span> k==<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> min(nums1[<span class="number">0</span>], nums2[<span class="number">0</span>])</span><br><span class="line">    p1 = min(k/<span class="number">2</span>, len1)</span><br><span class="line">    p2 = k - p1</span><br><span class="line">    <span class="keyword">if</span> nums1[p1<span class="number">-1</span>] &lt;= nums2[p2<span class="number">-1</span>]:</span><br><span class="line">        <span class="keyword">return</span> getKth(nums1[p1:], nums2, p2)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> getKth(nums1, nums2[p2:], p1)</span><br></pre></td></tr></table></figure>
-
-<p><strong>类似题目：</strong></p>
-<p>The Skyline Problem<br>Maximum Swap<br>Find K-th Smallest Pair Distance</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/13/155-Min-Stack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/13/155-Min-Stack/" itemprop="url">155. Min Stack</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-13T17:53:11+08:00">
-                2019-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Easy</p>
-<p><a href="https://leetcode.com/problems/min-stack/" target="_blank" rel="noopener">https://leetcode.com/problems/min-stack/</a></p>
-<p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.</p>
+<p><a href="https://leetcode.com/problems/longest-increasing-subsequence/" target="_blank" rel="noopener">https://leetcode.com/problems/longest-increasing-subsequence/</a></p>
+<p>Given an unsorted array of integers, find the length of longest increasing subsequence.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [10,9,2,5,3,7,101,18]</span><br><span class="line">Output: 4 </span><br><span class="line">Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.</span><br></pre></td></tr></table></figure>
+
+<p><strong>Note:</strong></p>
 <ul>
-<li>push(x) – Push element x onto stack.</li>
-<li>pop() – Removes the element on top of the stack.</li>
-<li>top() – Get the top element.</li>
-<li>getMin() – Retrieve the minimum element in the stack. </li>
+<li>There may be more than one LIS combination, it is only necessary for you to return the length.</li>
+<li>Your algorithm should run in O(<em>n2</em>) complexity.</li>
+</ul>
+<p><strong>Follow up:</strong> Could you improve it to O(<em>n</em> log <em>n</em>) time complexity?</p>
+<hr>
+<p>2019.9.21 没做出来，参考 <a href="https://blog.csdn.net/chaochen1407/article/details/82833885" target="_blank" rel="noopener">https://blog.csdn.net/chaochen1407/article/details/82833885</a></p>
+<p><strong>方法：</strong></p>
+<p>用一个长度为 len(nums) 的数组 seqs[] 记录，seqs[k] 表示长度为 k+1 的递增序列的尾元素值。并用一个变量 max_len 表示当前递增子序列的最大长度。</p>
+<p>遍历 nums[] 中的元素，对于新来的元素 n 来说：</p>
+<p>​    1）若 n&lt;seqs[0]，则 n 小于长度为 1 的递增子序列，也就是 n 是目前为止最小的值，更新 seqs[0]=n。</p>
+<p>​    2）若 n&gt;seqs[max_len-1]，则 n 比当前的最长递增子序列的尾元素还大，说明 n 可以加在其后，形成 max_len+1 的递增子序列。因此令 seqs[max_len] = n，同时 max_len 加 1。</p>
+<p>​    3）若不满足条件 1 和 2，则需要在长度为 1~max_len 的递增子序列中找到一个尾元素值刚好大于等于 n 的序列，把那个序列的尾元素值更新为 n，因为这样的话之后的元素值就更可能加在队列里形成递增子序列。采用二分查找的方法找那个序列。</p>
+<p>时间复杂度 O(nlogn)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLIS</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> len(nums)</span><br><span class="line">        max_len = <span class="number">1</span></span><br><span class="line">        seqs = [float(<span class="string">'inf'</span>)]*len(nums)</span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> n&lt;seqs[<span class="number">0</span>]:</span><br><span class="line">                seqs[<span class="number">0</span>] = n</span><br><span class="line">            <span class="keyword">elif</span> n&gt;seqs[max_len<span class="number">-1</span>]:</span><br><span class="line">                seqs[max_len] = n</span><br><span class="line">                max_len += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                l,r = <span class="number">0</span>,max_len</span><br><span class="line">                <span class="keyword">while</span> l&lt;r:</span><br><span class="line">                    mid = l+(r-l)/<span class="number">2</span></span><br><span class="line">                    <span class="keyword">if</span> n&gt;seqs[mid]:</span><br><span class="line">                        l = mid+<span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        r = mid</span><br><span class="line">                seqs[l] = n</span><br><span class="line">        <span class="keyword">return</span> max_len</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>Increasing Triplet Subsequence<br>Russian Doll Envelopes<br>Maximum Length of Pair Chain<br>Number of Longest Increasing Subsequence<br>Minimum ASCII Delete Sum for Two Strings</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/20/240-Search-a-2D-Matrix-II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/20/240-Search-a-2D-Matrix-II/" itemprop="url">240. Search a 2D Matrix II</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-20T19:37:54+08:00">
+                2019-09-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/search-a-2d-matrix-ii/" target="_blank" rel="noopener">https://leetcode.com/problems/search-a-2d-matrix-ii/</a></p>
+<p>Write an efficient algorithm that searches for a value in an <em>m</em> x <em>n</em> matrix. This matrix has the following properties:</p>
+<ul>
+<li>Integers in each row are sorted in ascending from left to right.</li>
+<li>Integers in each column are sorted in ascending from top to bottom.</li>
 </ul>
 <p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MinStack minStack = new MinStack();</span><br><span class="line">minStack.push(-2);</span><br><span class="line">minStack.push(0);</span><br><span class="line">minStack.push(-3);</span><br><span class="line">minStack.getMin();   --&gt; Returns -3.</span><br><span class="line">minStack.pop();</span><br><span class="line">minStack.top();      --&gt; Returns 0.</span><br><span class="line">minStack.getMin();   --&gt; Returns -2.</span><br></pre></td></tr></table></figure>
+<p>Consider the following matrix:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [1,   4,  7, 11, 15],</span><br><span class="line">  [2,   5,  8, 12, 19],</span><br><span class="line">  [3,   6,  9, 16, 22],</span><br><span class="line">  [10, 13, 14, 17, 24],</span><br><span class="line">  [18, 21, 23, 26, 30]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
+<p>Given target = <code>5</code>, return <code>true</code>.</p>
+<p>Given target = <code>20</code>, return <code>false</code>.</p>
 <hr>
-<p>2019.9.13 没做出来，参考 <a href="https://blog.csdn.net/fuxuemingzhu/article/details/79253237" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/79253237</a></p>
+<p>2019.9.20 做出来了</p>
 <p><strong>方法：</strong></p>
-<p>辅助栈</p>
-<p>将新增数字 append 到 stack[] 末尾，并将当前的最小值 append 到辅助栈 min[] 末尾，pop 的时候同时将两个栈的末尾元素出栈。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        initialize your data structure here.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.stack = []</span><br><span class="line">        self.min = []</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type x: int</span></span><br><span class="line"><span class="string">        :rtype: None</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.stack.append(x)</span><br><span class="line">        <span class="keyword">if</span> len(self.min)==<span class="number">0</span>:</span><br><span class="line">            self.min.append(x)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.min.append(min(x, self.min[<span class="number">-1</span>]))</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: None</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.stack.pop(<span class="number">-1</span>)</span><br><span class="line">        self.min.pop(<span class="number">-1</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.stack[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getMin</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.min[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<p>将起始点设置在矩阵右上角，这样从右上角点看整个矩阵，就可以当成一个二叉搜索树 BST。每次比较 matrix[row][col] 和 target 的大小，来二分地向左下角走。</p>
+<p>时间复杂度 O(m+n)，其中 m = len(matrix)，n = len(matrix[0])</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[int]]</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(matrix)==<span class="number">0</span> <span class="keyword">or</span> len(matrix[<span class="number">0</span>])==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        row = len(matrix)<span class="number">-1</span></span><br><span class="line">        col = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> col&lt;len(matrix[<span class="number">0</span>]) <span class="keyword">and</span> row&gt;=<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> matrix[row][col]==target:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">            <span class="keyword">elif</span> matrix[row][col]&gt;target:</span><br><span class="line">                row -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                col += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>类似题目：</strong></p>
-<p><a href="https://leetcode.com/problems/max-stack/" target="_blank" rel="noopener">Max Stack</a></p>
+<p><a href="https://leetcode.com/problems/search-a-2d-matrix/" target="_blank" rel="noopener">Search a 2D Matrix</a></p>
 
           
         
@@ -1209,7 +1480,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/13/437-Path-Sum-III/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/20/416-Partition-Equal-Subset-Sum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -1228,7 +1499,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/13/437-Path-Sum-III/" itemprop="url">437. Path Sum III</a></h1>
+                <a class="post-title-link" href="/2019/09/20/416-Partition-Equal-Subset-Sum/" itemprop="url">416. Partition Equal Subset Sum</a></h1>
         
 
         <div class="post-meta">
@@ -1240,144 +1511,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-13T17:37:59+08:00">
-                2019-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Easy</p>
-<p><a href="https://leetcode.com/problems/path-sum-iii/" target="_blank" rel="noopener">https://leetcode.com/problems/path-sum-iii/</a></p>
-<p>You are given a binary tree in which each node contains an integer value.</p>
-<p>Find the number of paths that sum to a given value.</p>
-<p>The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).</p>
-<p>The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8</span><br><span class="line"></span><br><span class="line">      10</span><br><span class="line">     /  \</span><br><span class="line">    5   -3</span><br><span class="line">   / \    \</span><br><span class="line">  3   2   11</span><br><span class="line"> / \   \</span><br><span class="line">3  -2   1</span><br><span class="line"></span><br><span class="line">Return 3. The paths that sum to 8 are:</span><br><span class="line"></span><br><span class="line">1.  5 -&gt; 3</span><br><span class="line">2.  5 -&gt; 2 -&gt; 1</span><br><span class="line">3. -3 -&gt; 11</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>2019.9.13 没做出来，参考 <a href="https://blog.csdn.net/fuxuemingzhu/article/details/71097135" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/71097135</a></p>
-<p><strong>方法：</strong></p>
-<p>DFS + DFS（一个 DFS 本身会调用自己，同时也调用另一个 DFS）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pathSum</span><span class="params">(self, root, sum)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :type sum: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> dfs(root, sum) + self.pathSum(root.left, sum) + self.pathSum(root.right, sum)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(node, cur)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> cur==node.val:</span><br><span class="line">        ans += <span class="number">1</span></span><br><span class="line">    ans += dfs(node.left, cur-node.val)</span><br><span class="line">    ans += dfs(node.right, cur-node.val)</span><br><span class="line">    <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<p><strong>类似题目：</strong></p>
-<p>Path Sum<br>Path Sum II<br>Path Sum IV<br>Longest Univalue Path</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/12/5-Longest-Palindromic-Substring/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/12/5-Longest-Palindromic-Substring/" itemprop="url">5. Longest Palindromic Substring</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T22:59:49+08:00">
-                2019-09-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-20T19:04:59+08:00">
+                2019-09-20
               </time>
             
 
@@ -1417,173 +1552,25 @@
         
           
             <p>Medium</p>
-<p><a href="https://leetcode.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">https://leetcode.com/problems/longest-palindromic-substring/</a></p>
-<p>Given a string <strong>s</strong>, find the longest palindromic substring in <strong>s</strong>. You may assume that the maximum length of <strong>s</strong> is 1000.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>2019.9.12 没做出来，参考 <a href="https://blog.csdn.net/dyx404514/article/details/42061017（讲解）、https://www.cnblogs.com/grandyang/p/4475985.html" target="_blank" rel="noopener">https://blog.csdn.net/dyx404514/article/details/42061017（讲解）、https://www.cnblogs.com/grandyang/p/4475985.html</a> （部分代码）、<a href="https://blog.csdn.net/qxqxqzzz/article/details/84800939（python" target="_blank" rel="noopener">https://blog.csdn.net/qxqxqzzz/article/details/84800939（python</a> 部分代码）</p>
-<p><strong>方法：</strong></p>
-<p>虽然暴力解法可以做出来，但是 O(n^2) 的复杂度很高。</p>
-<p><strong>马拉车算法</strong>可以用 O(n) 的时间复杂度解这道题：</p>
+<p><a href="https://leetcode.com/problems/partition-equal-subset-sum/" target="_blank" rel="noopener">https://leetcode.com/problems/partition-equal-subset-sum/</a></p>
+<p>Given a <strong>non-empty</strong> array containing <strong>only positive integers</strong>, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.</p>
+<p><strong>Note:</strong></p>
 <ol>
-<li>首先把输入字符串 s 的每个字符之间加一个 ‘#’，并在最前面加一个 ‘@’ 以防越界，得到新字符串 t。</li>
-<li>新建数组 p[]，len(p) = len(t)，p[i] 表示以 t[i] 为中点的回文字符串的最大半径（包含 t[i]）。</li>
-<li>从左往右依次计算 p[i]。当计算 p[i]时，p[j](0&lt;=j&lt;i) 已经计算完毕。设 mx 为之前计算中最长回文子串的右端点的最大值，并且设取得这个最大值的位置为 idx。</li>
+<li>Each of the array element will not exceed 100.</li>
+<li>The array size will not exceed 200.</li>
 </ol>
-<p>（以下引用自 <a href="https://blog.csdn.net/dyx404514/article/details/42061017）" target="_blank" rel="noopener">https://blog.csdn.net/dyx404514/article/details/42061017）</a></p>
-<blockquote>
-<p>（2）Len数组的计算<br>首先从左往右依次计算Len[i]，当计算Len[i]时，Len<a href="0<=j<i">j</a>已经计算完毕。设P为之前计算中最长回文子串的右端点的最大值，并且设取得这个最大值的位置为po，分两种情况：</p>
-<p>第一种情况：i&lt;=P</p>
-<p>那么找到i相对于po的对称位置，设为j，那么如果Len[j]&lt;P-i，如下图：</p>
-<img src="https://img-blog.csdn.net/20141221160212654" alt="img" style="zoom:50%;">
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [1, 5, 11, 5]</span><br><span class="line"></span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line">Explanation: The array can be partitioned as [1, 5, 5] and [11].</span><br></pre></td></tr></table></figure>
 
-
-<p>那么说明以j为中心的回文串一定在以po为中心的回文串的内部，且j和i关于位置po对称，由回文串的定义可知，一个回文串反过来还是一个回文串，所以以i为中心的回文串的长度至少和以j为中心的回文串一样，即Len[i]&gt;=Len[j]。因为Len[j]&lt;P-i,所以说i+Len[j]&lt;P。由对称性可知Len[i]=Len[j]。</p>
-<p>如果Len[j]&gt;=P-i,由对称性，说明以i为中心的回文串可能会延伸到P之外，而大于P的部分我们还没有进行匹配，所以要从P+1位置开始一个一个进行匹配，直到发生失配，从而更新P和对应的po以及Len[i]。</p>
-<img src="https://img-blog.csdn.net/20141221160232375" alt="img" style="zoom:50%;">
-
-
-<p>第二种情况: i&gt;P</p>
-<p>如果i比P还要大，说明对于中点为i的回文串还一点都没有匹配，这个时候，就只能老老实实地一个一个匹配了，匹配完成后要更新P的位置和对应的po以及Len[i]。</p>
-<img src="https://img-blog.csdn.net/20141221160247614" alt="img" style="zoom:50%;">
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestPalindrome</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(s)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> s</span><br><span class="line">        t = <span class="string">'@#'</span></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">            t += c</span><br><span class="line">            t += <span class="string">'#'</span></span><br><span class="line">        p = [<span class="number">0</span>]*len(t)</span><br><span class="line">        mx = <span class="number">0</span></span><br><span class="line">        idx = <span class="number">0</span></span><br><span class="line">        ans_len = <span class="number">0</span></span><br><span class="line">        ans_center = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(t)):</span><br><span class="line">            <span class="keyword">if</span> mx&gt;i:</span><br><span class="line">                p[i] = min(mx-i, p[<span class="number">2</span>*idx-i])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                p[i] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i-p[i]&gt;=<span class="number">0</span> <span class="keyword">and</span> i+p[i]&lt;len(t) <span class="keyword">and</span> t[i+p[i]]==t[i-p[i]]:</span><br><span class="line">                p[i] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> mx&lt;i+p[i]:</span><br><span class="line">                mx = i + p[i]</span><br><span class="line">                idx = i</span><br><span class="line">            <span class="keyword">if</span> p[i]&gt;ans_len:</span><br><span class="line">                ans_len = p[i]</span><br><span class="line">                ans_center = i</span><br><span class="line">        ans = t[ans_center-ans_len+<span class="number">1</span>:ans_center+ans_len]</span><br><span class="line">        <span class="keyword">return</span> ans.replace(<span class="string">'#'</span>, <span class="string">''</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>类似题目：</strong></p>
-<p>Shortest Palindrome<br>Palindrome Permutation<br>Palindrome Pairs<br>Longest Palindromic Subsequence</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/12/739-Daily-Temperatures/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/12/739-Daily-Temperatures/" itemprop="url">739. Daily Temperatures</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T01:09:49+08:00">
-                2019-09-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Medium</p>
-<p><a href="https://leetcode.com/problems/daily-temperatures/Given" target="_blank" rel="noopener">https://leetcode.com/problems/daily-temperatures/Given</a> a list of daily temperatures <code>T</code>, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for which this is possible, put <code>0</code> instead.</p>
-<p>For example, given the list of temperatures <code>T = [73, 74, 75, 71, 69, 72, 76, 73]</code>, your output should be <code>[1, 1, 4, 2, 1, 1, 0, 0]</code>.</p>
-<p><strong>Note:</strong> The length of <code>temperatures</code> will be in the range <code>[1, 30000]</code>. Each temperature will be an integer in the range <code>[30, 100]</code>.</p>
 <hr>
-<p>2019.9.12 独立做出来了</p>
+<p>2019.9.20 没做出来，参考 <a href="https://blog.csdn.net/fuxuemingzhu/article/details/79787425" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/79787425</a></p>
+<p>这道题我真的…照着 0-1 背包的思路写，还是有的题总是过不了，看来我还需要加强背包系列的知识点。</p>
 <p><strong>方法：</strong></p>
-<p>单调递减栈</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dailyTemperatures</span><span class="params">(self, T)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type T: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(T)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">0</span>]</span><br><span class="line">        ans = [<span class="number">0</span>]*len(T)</span><br><span class="line">        st = []</span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i&lt;len(T):</span><br><span class="line">            <span class="keyword">if</span> len(st)==<span class="number">0</span> <span class="keyword">or</span> T[st[<span class="number">-1</span>]]&gt;=T[i]:</span><br><span class="line">                st.append(i)</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                temp = st.pop(<span class="number">-1</span>)</span><br><span class="line">                ans[temp] = i-temp</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<p>0-1 背包问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canPartition</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        total = sum(nums)</span><br><span class="line">        <span class="keyword">if</span> total%<span class="number">2</span>==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        target = total/<span class="number">2</span></span><br><span class="line">        dp = [<span class="literal">False</span>]*(total+<span class="number">1</span>)</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(target, n<span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">                dp[j] = dp[j] <span class="keyword">or</span> dp[j-n]</span><br><span class="line">        <span class="keyword">return</span> dp[target]</span><br></pre></td></tr></table></figure>
 
 <p><strong>类似题目：</strong></p>
-<p><a href="https://leetcode.com/problems/next-greater-element-i/" target="_blank" rel="noopener">Next Greater Element I</a></p>
+<p><a href="https://leetcode.com/problems/partition-to-k-equal-sum-subsets/" target="_blank" rel="noopener">Partition to K Equal Sum Subsets</a></p>
 
           
         
@@ -1623,7 +1610,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1669,7 +1656,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

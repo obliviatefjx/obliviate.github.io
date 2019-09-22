@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/12/338-Counting-Bits/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/322-Coin-Change/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/12/338-Counting-Bits/" itemprop="url">338. Counting Bits</a></h1>
+                <a class="post-title-link" href="/2019/09/18/322-Coin-Change/" itemprop="url">322. Coin Change</a></h1>
         
 
         <div class="post-meta">
@@ -260,8 +260,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T00:58:19+08:00">
-                2019-09-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-18T00:15:36+08:00">
+                2019-09-18
               </time>
             
 
@@ -301,27 +301,21 @@
         
           
             <p>Medium</p>
-<p><a href="https://leetcode.com/problems/counting-bits/" target="_blank" rel="noopener">https://leetcode.com/problems/counting-bits/</a></p>
-<p>Given a non negative integer number <strong>num</strong>. For every numbers <strong>i</strong> in the range <strong>0 ≤ i ≤ num</strong> calculate the number of 1’s in their binary representation and return them as an array.</p>
+<p><a href="https://leetcode.com/problems/coin-change/" target="_blank" rel="noopener">https://leetcode.com/problems/coin-change/</a></p>
+<p>You are given coins of different denominations and a total amount of money <em>amount</em>. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return <code>-1</code>.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 2</span><br><span class="line">Output: [0,1,1]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: coins = [1, 2, 5], amount = 11</span><br><span class="line">Output: 3 </span><br><span class="line">Explanation: 11 = 5 + 5 + 1</span><br></pre></td></tr></table></figure>
 
-<p><strong>Follow up:</strong></p>
-<ul>
-<li>It is very easy to come up with a solution with run time <strong>O(n*sizeof(integer))</strong>. But can you do it in linear time <strong>O(n)</strong> /possibly in a single pass?</li>
-<li>Space complexity should be <strong>O(n)</strong>.</li>
-<li>Can you do it like a boss? Do it without using any builtin function like <strong>__builtin_popcount</strong> in c++ or in any other language.</li>
-</ul>
+<p><strong>Note</strong>:<br>You may assume that you have an infinite number of each kind of coin.</p>
 <hr>
-<p>2019.9.12 独立做出来了</p>
+<p>2019.9.17 没做出来，参考之前提交的代码（抄的）</p>
 <p><strong>方法：</strong></p>
-<p>DP + 位运算</p>
-<p>对于一个数 n 来说，<strong>n&amp;(n-1) 可以把 n 的二进制表示上的最后一个 ‘1’ 删除</strong>。</p>
-<p>因此 n 的二进制表示中 ‘1’ 的个数 = n&amp;(n-1) 的二进制表示中 ‘1’ 的个数 + 1，由此写 DP。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countBits</span><span class="params">(self, num)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type num: int</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> num==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">0</span>]</span><br><span class="line">        ans = [<span class="number">0</span>]*(num+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, num+<span class="number">1</span>):</span><br><span class="line">            temp = i&amp;(i<span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">if</span> temp==<span class="number">0</span>:</span><br><span class="line">                ans[i] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ans[i] = ans[temp]+<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<p>1）新建一个长为 amount+1 的数组 ans[]，ans[i] 表示和为 i 的硬币组合里最少的硬币个数。初始化为 a[i] = float(‘inf’)。</p>
+<p>2）遍历 ans[1]~ans[amount]，在每次循环中还要遍历每个硬币值，判断“如果把这个硬币放进找零组合里，那么是否能找零且硬币数量最小的组合中的硬币个数是多少”</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">coinChange</span><span class="params">(self, coins, amount)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type coins: List[int]</span></span><br><span class="line"><span class="string">        :type amount: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(coins)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="keyword">if</span> amount==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        ans = [float(<span class="string">'inf'</span>)]*(amount+<span class="number">1</span>)</span><br><span class="line">        ans[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,amount+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> coins:</span><br><span class="line">                <span class="keyword">if</span> c&lt;=i <span class="keyword">and</span> ans[i-c]!=float(<span class="string">'inf'</span>):</span><br><span class="line">                    ans[i] = min(ans[i], ans[i-c]+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> ans[<span class="number">-1</span>] <span class="keyword">if</span> ans[<span class="number">-1</span>]!=float(<span class="string">'inf'</span>) <span class="keyword">else</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>类似题目：</strong></p>
-<p><a href="https://leetcode.com/problems/number-of-1-bits/" target="_blank" rel="noopener">Number of 1 Bits</a></p>
+<p><a href="https://leetcode.com/problems/minimum-cost-for-tickets/" target="_blank" rel="noopener">Minimum Cost For Tickets</a></p>
 
           
         
@@ -370,7 +364,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/11/494-Target-Sum/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/279-Perfect-Squares/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -389,7 +383,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/11/494-Target-Sum/" itemprop="url">494. Target Sum</a></h1>
+                <a class="post-title-link" href="/2019/09/17/279-Perfect-Squares/" itemprop="url">279. Perfect Squares</a></h1>
         
 
         <div class="post-meta">
@@ -401,8 +395,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-11T00:39:15+08:00">
-                2019-09-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-17T23:51:30+08:00">
+                2019-09-17
               </time>
             
 
@@ -442,302 +436,446 @@
         
           
             <p>Medium</p>
-<p><a href="https://leetcode.com/problems/target-sum/" target="_blank" rel="noopener">https://leetcode.com/problems/target-sum/</a></p>
-<p>You are given a list of non-negative integers, a1, a2, …, an, and a target, S. Now you have 2 symbols <code>+</code> and <code>-</code>. For each integer, you should choose one from <code>+</code> and <code>-</code> as its new symbol.</p>
-<p>Find out how many ways to assign symbols to make sum of integers equal to target S.</p>
+<p><a href="https://leetcode.com/problems/perfect-squares/" target="_blank" rel="noopener">https://leetcode.com/problems/perfect-squares/</a></p>
+<p>Given a positive integer <em>n</em>, find the least number of perfect square numbers (for example, <code>1, 4, 9, 16, ...</code>) which sum to <em>n</em>.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Input: nums is [1, 1, 1, 1, 1], S is 3. </span><br><span class="line">Output: 5</span><br><span class="line">Explanation: </span><br><span class="line"></span><br><span class="line">-1+1+1+1+1 = 3</span><br><span class="line">+1-1+1+1+1 = 3</span><br><span class="line">+1+1-1+1+1 = 3</span><br><span class="line">+1+1+1-1+1 = 3</span><br><span class="line">+1+1+1+1-1 = 3</span><br><span class="line"></span><br><span class="line">There are 5 ways to assign symbols to make the sum of nums be target 3.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: n = 12</span><br><span class="line">Output: 3 </span><br><span class="line">Explanation: 12 = 4 + 4 + 4.</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>2019.9.17 做出来了</p>
+<p>感觉这道题和 322. Coin Change 一样一样的，但是官方的“类似题目”里又没出现 Coin Change…（这两道题真的好像呀</p>
+<p>方法也是照搬的 Coin Change 的解法，但是 Coin Change 我之前没做出来，所以这道题的“做出来了”比较虚hhhh</p>
+<p><strong>方法：</strong>（有点像恰好装满的背包问题）</p>
+<p>1）求 n 的开方值 high，所以平方和为 n 的可能组合中的数字最大不超过 high。</p>
+<p>2）新建一个长为 n+1 的数组 ans[]，ans[i] 表示平方和为 i 的数字组合里最少的数字个数。因此初始化为 a[i] = i，表示最开始最多是 i 个 1 的平方和为 i。</p>
+<p>3）遍历 a[1]<del>a[n]，在每次循环中还要从小到大遍历 1</del>high，判断“如果把这个数放进平方和组合里，那么数字数量最小的组合中的数字个数是多少”</p>
+<p>P.S. 我看到有另外一种<a href="https://www.cnblogs.com/grandyang/p/4800552.html" target="_blank" rel="noopener">非常简单的方法</a>，用到了 “四平方和定理”，没再深究了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numSquares</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> n==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        ans = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(n+<span class="number">1</span>)]</span><br><span class="line">        high = int(n**<span class="number">0.5</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,high+<span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> j*j&lt;=i:</span><br><span class="line">                    ans[i] = min(ans[i], ans[i-j*j]+<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> ans[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>Count Primes<br>Ugly Number II</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/337-House-Robber-III/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/17/337-House-Robber-III/" itemprop="url">337. House Robber III</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-17T23:15:20+08:00">
+                2019-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/house-robber-iii/" target="_blank" rel="noopener">https://leetcode.com/problems/house-robber-iii/</a></p>
+<p>The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the “root.” Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that “all houses in this place forms a binary tree”. It will automatically contact the police if two directly-linked houses were broken into on the same night.</p>
+<p>Determine the maximum amount of money the thief can rob tonight without alerting the police.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,2,3,null,3,null,1]</span><br><span class="line"></span><br><span class="line">     3</span><br><span class="line">    / \</span><br><span class="line">   2   3</span><br><span class="line">    \   \ </span><br><span class="line">     3   1</span><br><span class="line"></span><br><span class="line">Output: 7 </span><br><span class="line">Explanation: Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>2019.9.16 做出了一半吧，参考 <a href="https://www.cnblogs.com/grandyang/p/5275096.html" target="_blank" rel="noopener">https://www.cnblogs.com/grandyang/p/5275096.html</a></p>
+<p><strong>方法：</strong></p>
+<p>一开始用纯 DFS，超时。</p>
+<p>后来先遍历节点，把每个节点都存在一个数组中，然后根据序号取节点，还是超时。</p>
+<p>参考博客发现可以把节点存在字典里（我怎么没想到…！</p>
+<p>于是一边遍历一边把遍历过的节点存在字典里，过了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rob</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root.left <span class="keyword">and</span> <span class="keyword">not</span> root.right:</span><br><span class="line">            <span class="keyword">return</span> root.val</span><br><span class="line">        money = &#123;&#125;</span><br><span class="line">        dfs(root, money)</span><br><span class="line">        <span class="keyword">return</span> max(money[root])</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(node, money)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node.left <span class="keyword">and</span> <span class="keyword">not</span> node.right:</span><br><span class="line">        money[node] = (node.val, <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    dfs(node.left, money)</span><br><span class="line">    dfs(node.right, money)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node.left:</span><br><span class="line">        money[node] = (node.val+money[node.right][<span class="number">1</span>], max(money[node.right]))</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node.right:</span><br><span class="line">        money[node] = (node.val+money[node.left][<span class="number">1</span>], max(money[node.left]))</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    money[node] = (node.val+money[node.left][<span class="number">1</span>]+money[node.right][<span class="number">1</span>], max(money[node.left])+max(money[node.right]))</span><br><span class="line">    <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p><a href="https://leetcode.com/problems/house-robber-ii/" target="_blank" rel="noopener">House Robber II</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/96-Unique-Binary-Search-Trees/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/17/96-Unique-Binary-Search-Trees/" itemprop="url">96. Unique Binary Search Trees</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-17T13:02:47+08:00">
+                2019-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">https://leetcode.com/problems/unique-binary-search-trees/</a></p>
+<p>Given <em>n</em>, how many structurally unique <strong>BST’s</strong> (binary search trees) that store values 1 … <em>n</em>?</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: 3</span><br><span class="line">Output: 5</span><br><span class="line">Explanation:</span><br><span class="line">Given n = 3, there are a total of 5 unique BST&apos;s:</span><br><span class="line"></span><br><span class="line">   1         3     3      2      1</span><br><span class="line">    \       /     /      / \      \</span><br><span class="line">     3     2     1      1   3      2</span><br><span class="line">    /     /       \                 \</span><br><span class="line">   2     1         2                 3</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>2019.9.17 做出来了</p>
+<p><strong>方法：</strong></p>
+<p>卡特兰数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numTrees</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> n&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        dp = [<span class="number">0</span>]*(n+<span class="number">1</span>)</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,n+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</span><br><span class="line">                dp[i] += dp[j]*dp[i-j<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p><a href="https://leetcode.com/problems/unique-binary-search-trees-ii/" target="_blank" rel="noopener">Unique Binary Search Trees II</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/49-Group-Anagrams/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/16/49-Group-Anagrams/" itemprop="url">49. Group Anagrams</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T00:30:28+08:00">
+                2019-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/group-anagrams/" target="_blank" rel="noopener">https://leetcode.com/problems/group-anagrams/</a></p>
+<p>Given an array of strings, group anagrams together.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;],</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;],</span><br><span class="line">  [&quot;nat&quot;,&quot;tan&quot;],</span><br><span class="line">  [&quot;bat&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
 <p><strong>Note:</strong></p>
-<ol>
-<li>The length of the given array is positive and will not exceed 20.</li>
-<li>The sum of elements in the given array will not exceed 1000.</li>
-<li>Your output answer is guaranteed to be fitted in a 32-bit integer.</li>
-</ol>
-<hr>
-<p>2019.9.11 独立做出来了</p>
-<p>虽然是独立写出来的，但是参考了之前留在页面上的注释：</p>
-<p>“其实一般能用dfs解决的题目，如果题目只要求满足条件的数字而不是所有的结果且dfs超时时，解决方法其实基本只有一条路：动态规划”</p>
-<p>于是用了 DP</p>
-<p><strong>方法：</strong></p>
-<p>用一个长度和 num[] 相同的 dp[]，dp[i] 为一个字典，key 为计算 nums[0]~nums[i] 的所有加减号的值，value 为相应的次数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findTargetSumWays</span><span class="params">(self, nums, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type S: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        dp = [&#123;&#125; <span class="keyword">for</span> _ <span class="keyword">in</span> range(len(nums))]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">if</span> i==<span class="number">0</span>:</span><br><span class="line">                dp[i][nums[i]] = dp[i].get(nums[i], <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">                dp[i][-nums[i]] = dp[i].get(-nums[i], <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">for</span> key <span class="keyword">in</span> dp[i<span class="number">-1</span>]:</span><br><span class="line">                    dp[i][key+nums[i]] = dp[i].get(key+nums[i], <span class="number">0</span>) + dp[i<span class="number">-1</span>][key]</span><br><span class="line">                    dp[i][key-nums[i]] = dp[i].get(key-nums[i], <span class="number">0</span>) + dp[i<span class="number">-1</span>][key]</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>].get(S,<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>类似题目：</strong></p>
-<p>Expression Add Operators</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/11/22-Generate-Parentheses/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/11/22-Generate-Parentheses/" itemprop="url">22. Generate Parentheses</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-11T00:18:18+08:00">
-                2019-09-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Medium</p>
-<p><a href="https://leetcode.com/problems/generate-parentheses/" target="_blank" rel="noopener">https://leetcode.com/problems/generate-parentheses/</a></p>
-<p>Given <em>n</em> pairs of parentheses, write a function to generate all combinations of well-formed parentheses.</p>
-<p>For example, given <em>n</em> = 3, a solution set is:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &quot;((()))&quot;,</span><br><span class="line">  &quot;(()())&quot;,</span><br><span class="line">  &quot;(())()&quot;,</span><br><span class="line">  &quot;()(())&quot;,</span><br><span class="line">  &quot;()()()&quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>2019.9.11 独立做出来了</p>
-<p><strong>方法：</strong></p>
-<p>DFS</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generateParenthesis</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :rtype: List[str]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> n==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        ans = []</span><br><span class="line">        dfs(ans, n, <span class="string">""</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(ans, n, st, n_l, n_r)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n_l==n <span class="keyword">and</span> n_r==n:</span><br><span class="line">        ans.append(st)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> n_r&gt;n <span class="keyword">or</span> n_l&gt;n <span class="keyword">or</span> n_l&lt;n_r:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    dfs(ans, n, st+<span class="string">'('</span>, n_l+<span class="number">1</span>, n_r)</span><br><span class="line">    dfs(ans, n, st+<span class="string">')'</span>, n_l, n_r+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>类似题目：</strong></p>
-<p>Combinations<br>Number of Squareful Arrays<br>Parsing A Boolean Expression</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/98-Validate-Binary-Search-Tree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/10/98-Validate-Binary-Search-Tree/" itemprop="url">98. Validate Binary Search Tree</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-10T23:51:30+08:00">
-                2019-09-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Medium</p>
-<p><a href="https://leetcode.com/problems/validate-binary-search-tree/" target="_blank" rel="noopener">https://leetcode.com/problems/validate-binary-search-tree/</a></p>
-<p>Given a binary tree, determine if it is a valid binary search tree (BST).</p>
-<p>Assume a BST is defined as follows:</p>
 <ul>
-<li>The left subtree of a node contains only nodes with keys <strong>less than</strong> the node’s key.</li>
-<li>The right subtree of a node contains only nodes with keys <strong>greater than</strong> the node’s key.</li>
-<li>Both the left and right subtrees must also be binary search trees.</li>
+<li>All inputs will be in lowercase.</li>
+<li>The order of your output does not matter</li>
 </ul>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    2</span><br><span class="line">   / \</span><br><span class="line">  1   3</span><br><span class="line"></span><br><span class="line">Input: [2,1,3]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
-
 <hr>
-<p>2019.9.10 独立做出来了</p>
-<p><strong>方法：</strong></p>
-<p>DFS</p>
-<p>DFS(node) 返回三个变量：以当前 node 为根的树的最小值、最大值、是否为 BST</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValidBST</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        _, _, ans = dfs(root)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(node)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node.left <span class="keyword">and</span> <span class="keyword">not</span> node.right:</span><br><span class="line">        <span class="keyword">return</span> node.val, node.val, <span class="literal">True</span></span><br><span class="line">    <span class="keyword">if</span> node.left:</span><br><span class="line">        l_min, l_max, l_ans = dfs(node.left)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> l_ans <span class="keyword">or</span> l_max&gt;=node.val:</span><br><span class="line">            <span class="keyword">return</span> l_min, l_max, <span class="literal">False</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        l_min = node.val</span><br><span class="line">    <span class="keyword">if</span> node.right:</span><br><span class="line">        r_min, r_max, r_ans = dfs(node.right)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> r_ans <span class="keyword">or</span> r_min&lt;=node.val:</span><br><span class="line">            <span class="keyword">return</span> r_min, r_max, <span class="literal">False</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        r_max = node.val</span><br><span class="line">    <span class="keyword">return</span> l_min, r_max, <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>2019.9.15 独立做出来了（感觉我现在总想一蹴而就地写出最优解，但往往想不出来…就迟迟不写，要改正鸭</p>
+<p>虽然做出来了，但是这道题之前应该是参考别人的方法提交过，Runtime = 76 ms, Memory = 15.8 MB，但是我没印象了，就自己想的方法。</p>
+<p>以下三种方法从方法一到方法三依次做了速度优化。</p>
+<p><strong>方法一：</strong></p>
+<p>由于题目限定了字符串都是小写英文字母，因此可以把字符映射到长为 26 的数字串中，数字串每位对应相应小写字母的个数。把这个数字串作为 key 用于字典中，value 为数字串为 key 的字符串数组。</p>
+<p>（很慢）Runtime = 236 ms, Memory = 15.1 MB</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">groupAnagrams</span><span class="params">(self, strs)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type strs: List[str]</span></span><br><span class="line"><span class="string">        :rtype: List[List[str]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(strs)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        <span class="keyword">if</span> len(strs)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> [strs]</span><br><span class="line">        ans = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> strs:</span><br><span class="line">            num = str2num(s)</span><br><span class="line">            <span class="keyword">if</span> num <span class="keyword">not</span> <span class="keyword">in</span> ans:</span><br><span class="line">                ans[num] = [s]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ans[num].append(s)</span><br><span class="line">        <span class="keyword">return</span> ans.values()</span><br><span class="line">        </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str2num</span><span class="params">(s)</span>:</span></span><br><span class="line">    cnt = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">        cnt[c] = cnt.get(c, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">    ans = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">26</span>):</span><br><span class="line">        ans += str(cnt.get(chr(ord(<span class="string">'a'</span>)+i), <span class="number">0</span>))</span><br><span class="line">    <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法二：</strong></p>
+<p>同样的思想，但是把 str2num() 函数改为了由字符串转换为字符升序的字符串（即标准字符串）函数，这样不用每次都统计 26 个字母。</p>
+<p>（稍快）Runtime = 112 ms, Memory = 15.1 MB</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">groupAnagrams</span><span class="params">(self, strs)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type strs: List[str]</span></span><br><span class="line"><span class="string">        :rtype: List[List[str]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(strs)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        <span class="keyword">if</span> len(strs)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> [strs]</span><br><span class="line">        ans = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> strs:</span><br><span class="line">            num = sort_str(s)</span><br><span class="line">            <span class="keyword">if</span> num <span class="keyword">not</span> <span class="keyword">in</span> ans:</span><br><span class="line">                ans[num] = [s]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ans[num].append(s)</span><br><span class="line">        <span class="keyword">return</span> ans.values()</span><br><span class="line">        </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sort_str</span><span class="params">(s)</span>:</span></span><br><span class="line">    num = sorted(map(ord, s))</span><br><span class="line">    num = map(chr, num)</span><br><span class="line">    ans = <span class="string">''</span>.join(num)</span><br><span class="line">    <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法三：</strong></p>
+<p>思路和方法二完全一样，只是修改了 sort_str() 函数里对字符串中字符排序的代码，直接对字符排序，而不用先映射到 ASCII 码再映射回来。</p>
+<p>常规写法：<strong>对字符串 s 中字符排序：ans = ‘’.join(sorted(list(s)))</strong></p>
+<p>（最快）Runtime = 84 ms, Memory = 15.5 MB</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">groupAnagrams</span><span class="params">(self, strs)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type strs: List[str]</span></span><br><span class="line"><span class="string">        :rtype: List[List[str]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(strs)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        <span class="keyword">if</span> len(strs)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> [strs]</span><br><span class="line">        ans = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> strs:</span><br><span class="line">            num = sort_str(s)</span><br><span class="line">            <span class="keyword">if</span> num <span class="keyword">not</span> <span class="keyword">in</span> ans:</span><br><span class="line">                ans[num] = [s]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ans[num].append(s)</span><br><span class="line">        <span class="keyword">return</span> ans.values()</span><br><span class="line">        </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sort_str</span><span class="params">(s)</span>:</span></span><br><span class="line">    num = sorted(list(s))</span><br><span class="line">    ans = <span class="string">''</span>.join(num)</span><br><span class="line">    <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
 
 <p><strong>类似题目：</strong></p>
-<p>Binary Tree Inorder Traversal<br>Find Mode in Binary Search Tree</p>
+<p>Valid Anagram<br>Group Shifted Strings</p>
 
           
         
@@ -786,7 +924,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/124-Binary-Tree-Maximum-Path-Sum/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/215-Kth-Largest-Element-in-an-Array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -805,7 +943,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/10/124-Binary-Tree-Maximum-Path-Sum/" itemprop="url">124. Binary Tree Maximum Path Sum</a></h1>
+                <a class="post-title-link" href="/2019/09/16/215-Kth-Largest-Element-in-an-Array/" itemprop="url">215. Kth Largest Element in an Array</a></h1>
         
 
         <div class="post-meta">
@@ -817,148 +955,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-10T01:03:25+08:00">
-                2019-09-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Hard</p>
-<p><a href="https://leetcode.com/problems/binary-tree-maximum-path-sum/" target="_blank" rel="noopener">https://leetcode.com/problems/binary-tree-maximum-path-sum/</a></p>
-<p>Given a <strong>non-empty</strong> binary tree, find the maximum path sum.</p>
-<p>For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain <strong>at least one node</strong> and does not need to go through the root.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3]</span><br><span class="line"></span><br><span class="line">       1</span><br><span class="line">      / \</span><br><span class="line">     2   3</span><br><span class="line"></span><br><span class="line">Output: 6</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>2019.9.10 独立做出来了</p>
-<p><strong>方法：</strong></p>
-<p>DFS</p>
-<p>dfs(node) 函数里完成两个功能：</p>
-<ol>
-<li>计算 node.val + {左子树的最大路径值} + {右子树的最大路径值}，并和一个全局变量 ans 比较，令 ans 等于较大值。这样对每个 node 都计算一遍后就能得到树中的最大路径长了（不一定包含根节点）</li>
-<li>返回包含当前 node 的最大路径值，这个值需要确保大于等于 0 的。</li>
-</ol>
-<p>和 <a href="https://www.cnblogs.com/grandyang/p/4280120.html" target="_blank" rel="noopener">https://www.cnblogs.com/grandyang/p/4280120.html</a> 方法类似，只不过那个博主是在调用 dfs 之后取大于等于 0 的值，我是在调用 dfs 时就确保返回的一定是大于等于 0 的值，作用相同。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">maxPathSum</span><span class="params">(self, root)</span>:</span></span><br><span class="line">       <span class="string">""" </span></span><br><span class="line"><span class="string">       :type root: TreeNode</span></span><br><span class="line"><span class="string">       :rtype: int</span></span><br><span class="line"><span class="string">       """</span></span><br><span class="line">       <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">       self.ans = -float(<span class="string">'inf'</span>)</span><br><span class="line">       self.dfs(root)</span><br><span class="line">       <span class="keyword">return</span> self.ans</span><br><span class="line">       </span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, node)</span>:</span></span><br><span class="line">       <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">       <span class="keyword">if</span> <span class="keyword">not</span> node.left <span class="keyword">and</span> <span class="keyword">not</span> node.right:</span><br><span class="line">           self.ans = max(self.ans, node.val)</span><br><span class="line">           <span class="keyword">return</span> max(node.val,<span class="number">0</span>)</span><br><span class="line">       left = self.dfs(node.left)</span><br><span class="line">       right = self.dfs(node.right)</span><br><span class="line">       self.ans = max(self.ans, node.val+left+right)</span><br><span class="line">       <span class="keyword">return</span> max(max(left, right)+node.val, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>类似题目：</strong></p>
-<p>Path Sum<br>Sum Root to Leaf Numbers<br>Path Sum IV<br>Longest Univalue Path</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/200-Number-of-Islands/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/10/200-Number-of-Islands/" itemprop="url">200. Number of Islands</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-10T00:44:04+08:00">
-                2019-09-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T00:04:54+08:00">
+                2019-09-16
               </time>
             
 
@@ -998,21 +996,21 @@
         
           
             <p>Medium</p>
-<p><a href="https://leetcode.com/problems/number-of-islands/" target="_blank" rel="noopener">https://leetcode.com/problems/number-of-islands/</a></p>
-<p>Given a 2d grid map of <code>&#39;1&#39;</code>s (land) and <code>&#39;0&#39;</code>s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>
+<p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">https://leetcode.com/problems/kth-largest-element-in-an-array/</a></p>
+<p>Find the <strong>k</strong>th largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.</p>
 <p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">11110</span><br><span class="line">11010</span><br><span class="line">11000</span><br><span class="line">00000</span><br><span class="line"></span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,2,1,5,6,4] and k = 2</span><br><span class="line">Output: 5</span><br></pre></td></tr></table></figure>
 
+<p><strong>Note:</strong><br>You may assume k is always valid, 1 ≤ k ≤ array’s length</p>
 <hr>
-<p>2019.9.10 没做出来，参考 <a href="https://blog.csdn.net/fuxuemingzhu/article/details/81126995" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/81126995</a></p>
+<p>2019.9.16 没做出来，参考之前写的 TopKth.py 写的，还是没有完全掌握啊唉</p>
 <p><strong>方法：</strong></p>
-<p>看了上面那个博客的讲解：</p>
-<p>“我们对每个有“1”的位置进行dfs，把和它四联通的位置全部变成“0”，这样就能把一个点推广到一个岛。所以，我们总的进行了dfs的次数，就是总过有多少个岛的数目。注意理解dfs函数的意义：已知当前是1，把它周围相邻的所有1全部转成0.”</p>
-<p>然后自己写的代码。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numIslands</span><span class="params">(self, grid)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type grid: List[List[str]]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(grid)==<span class="number">0</span> <span class="keyword">or</span> len(grid[<span class="number">0</span>])==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        m,n = len(grid), len(grid[<span class="number">0</span>])</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j]==<span class="string">'1'</span>:</span><br><span class="line">                    dfs(grid, i, j)</span><br><span class="line">                    ans += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(grid, i, j)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> i&lt;<span class="number">0</span> <span class="keyword">or</span> j&lt;<span class="number">0</span> <span class="keyword">or</span> i==len(grid) <span class="keyword">or</span> j==len(grid[<span class="number">0</span>]):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> grid[i][j]==<span class="string">'1'</span>:</span><br><span class="line">        grid[i][j] = <span class="string">'0'</span></span><br><span class="line">        dfs(grid, i+<span class="number">1</span>, j)</span><br><span class="line">        dfs(grid, i<span class="number">-1</span>, j)</span><br><span class="line">        dfs(grid, i, j+<span class="number">1</span>)</span><br><span class="line">        dfs(grid, i, j<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+<p>快排</p>
+<p>一开始正确写出了 search(arr, l, r) 函数（也就是通常的 partition() 函数），但是写错了主函数里的循环。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findKthLargest</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type k: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">        l,r = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        idx = search(nums, l, r)</span><br><span class="line">        <span class="keyword">while</span> idx!=len(nums)-k:</span><br><span class="line">            <span class="keyword">if</span> idx&gt;len(nums)-k:</span><br><span class="line">                r = idx<span class="number">-1</span></span><br><span class="line">                idx = search(nums, l, r)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                l = idx+<span class="number">1</span></span><br><span class="line">                idx = search(nums, l, r)</span><br><span class="line">        <span class="keyword">return</span> nums[len(nums)-k]</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(arr, l, r)</span>:</span></span><br><span class="line">    p = arr[l]</span><br><span class="line">    <span class="keyword">while</span> l&lt;r:</span><br><span class="line">        <span class="keyword">while</span> l&lt;r <span class="keyword">and</span> arr[r]&gt;=p:</span><br><span class="line">            r -= <span class="number">1</span></span><br><span class="line">        arr[l] = arr[r]</span><br><span class="line">        <span class="keyword">while</span> l&lt;r <span class="keyword">and</span> arr[l]&lt;=p:</span><br><span class="line">            l += <span class="number">1</span></span><br><span class="line">        arr[r] = arr[l]</span><br><span class="line">    arr[l] = p</span><br><span class="line">    <span class="keyword">return</span> l</span><br></pre></td></tr></table></figure>
 
 <p><strong>类似题目：</strong></p>
-<p>Surrounded Regions<br>Walls and Gates<br>Number of Islands II<br>Number of Connected Components in an Undirected Graph<br>Number of Distinct Islands<br>Max Area of Island</p>
+<p>Wiggle Sort II<br>Third Maximum Number<br>Kth Largest Element in a Stream<br>K Closest Points to Origin</p>
 
           
         
@@ -1061,7 +1059,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/09/41-First-Missing-Positive/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/647-Palindromic-Substrings/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -1080,7 +1078,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/09/41-First-Missing-Positive/" itemprop="url">41. First Missing Positive</a></h1>
+                <a class="post-title-link" href="/2019/09/15/647-Palindromic-Substrings/" itemprop="url">647. Palindromic Substrings</a></h1>
         
 
         <div class="post-meta">
@@ -1092,8 +1090,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-09T00:53:17+08:00">
-                2019-09-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-15T23:14:03+08:00">
+                2019-09-15
               </time>
             
 
@@ -1132,34 +1130,22 @@
       
         
           
-            <p>Hard</p>
-<p><a href="https://leetcode.com/problems/first-missing-positive/" target="_blank" rel="noopener">https://leetcode.com/problems/first-missing-positive/</a></p>
-<p>Given an unsorted integer array, find the smallest missing positive integer.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,0]</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure>
+            <p>Medium</p>
+<p><a href="https://leetcode.com/problems/palindromic-substrings/" target="_blank" rel="noopener">https://leetcode.com/problems/palindromic-substrings/</a></p>
+<p>Given a string, your task is to count how many palindromic substrings in this string.</p>
+<p>The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abc&quot;</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: Three palindromic strings: &quot;a&quot;, &quot;b&quot;, &quot;c&quot;.</span><br></pre></td></tr></table></figure>
 
-<p><strong>Note:</strong></p>
-<p>Your algorithm should run in <em>O</em>(<em>n</em>) time and uses constant extra space.</p>
 <hr>
-<p>2019.9.9 独立做出来了</p>
-<p><del>堂堂一道 hard 题竟然被我做出来了，想想还有点小激动？</del></p>
+<p>2019.9.15 知道用马拉车方法做，照抄的第 5 题的马拉车算法，但是没能自己写出马拉车算法。</p>
 <p><strong>方法：</strong></p>
-<p>方法和 448 题类似，由于要求 O(n) 时间复杂度和 O(1) 空间复杂度，只能想到查找，要么指针要么元素交换，元素交换的话就需要把元素值和 index 联系起来。</p>
-<p>同时又想到对于一个长度为 N 的数组 nums[] 来说，其返回的最大 missing positive integer 也就是 N+1（当 nums[i] = i + 1 时），因此可以遍历数组，把非法元素值（nums[i] &lt;= 0 或 nums[i] &gt; N 的值）滤掉，同时把合法元素值按 index 交换。最后再遍历一遍数组，返回第一次出现 nums[i] != i + 1 时的 i+1 值。</p>
-<blockquote>
-<p>这道题我一开始提交的代码一直显示超时，我还以为是算法问题，按照别人的标答提交也还是超时，最后定位出 bug 是在交换 nums[i] 和 nums[nums[i]-1] 时的代码上：</p>
-<p>我写的是 <code>nums[i], nums[nums[i]-1] = nums[nums[i]-1], nums[i]</code> ，<strong>超时</strong>。</p>
-<p>改成</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; temp = nums[nums[i]<span class="number">-1</span>]</span><br><span class="line">&gt; nums[nums[i]<span class="number">-1</span>] = nums[i]</span><br><span class="line">&gt; nums[i] = temp`</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p><strong>AC</strong>。</p>
-<p>原因可参考 <a href="https://zhuanlan.zhihu.com/p/25436739" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25436739</a></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">firstMissingPositive</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span> <span class="keyword">if</span> nums[<span class="number">0</span>]!=<span class="number">1</span> <span class="keyword">else</span> <span class="number">2</span></span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i&lt;len(nums):</span><br><span class="line">            <span class="keyword">if</span> nums[i]&gt;len(nums) <span class="keyword">or</span> nums[i]&lt;=<span class="number">0</span>:</span><br><span class="line">                nums[i] = <span class="number">0</span></span><br><span class="line">            <span class="keyword">elif</span> nums[i]!=nums[nums[i]<span class="number">-1</span>]:</span><br><span class="line">                temp = nums[nums[i]<span class="number">-1</span>]</span><br><span class="line">                nums[nums[i]<span class="number">-1</span>] = nums[i]</span><br><span class="line">                nums[i] = temp</span><br><span class="line">                i -= <span class="number">1</span></span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i]!=i+<span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> i+<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> len(nums)+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>马拉车算法好厉害！</p>
+<p>注意 ans += p[i]/2 （而不是 ans += p[i]）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countSubstrings</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(s)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> len(s)</span><br><span class="line">        t = <span class="string">'@#'</span></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> s:</span><br><span class="line">            t += c</span><br><span class="line">            t += <span class="string">'#'</span></span><br><span class="line">        p = [<span class="number">0</span>]*len(t)</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        mx = <span class="number">0</span></span><br><span class="line">        idx = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(t)):</span><br><span class="line">            <span class="keyword">if</span> mx&gt;i:</span><br><span class="line">                p[i] = min(p[<span class="number">2</span>*idx-i], mx-i)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                p[i] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i-p[i]&gt;=<span class="number">0</span> <span class="keyword">and</span> i+p[i]&lt;len(t) <span class="keyword">and</span> t[i+p[i]]==t[i-p[i]]:</span><br><span class="line">                p[i] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> mx&lt;i+p[i]:</span><br><span class="line">                mx = i + p[i]</span><br><span class="line">                idx = i</span><br><span class="line">            ans += p[i]/<span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
 
 <p><strong>类似题目：</strong></p>
-<p><a href="https://leetcode.com/problems/couples-holding-hands/" target="_blank" rel="noopener">Couples Holding Hands</a></p>
+<p>Longest Palindromic Substring<br>Longest Palindromic Subsequence<br>Palindromic Substrings</p>
 
           
         
@@ -1208,7 +1194,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/08/85-Maximal-Rectangle/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/14/4-Median-of-Two-Sorted-Arrays/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -1227,7 +1213,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/08/85-Maximal-Rectangle/" itemprop="url">85. Maximal Rectangle</a></h1>
+                <a class="post-title-link" href="/2019/09/14/4-Median-of-Two-Sorted-Arrays/" itemprop="url">4. Median of Two Sorted Arrays</a></h1>
         
 
         <div class="post-meta">
@@ -1239,8 +1225,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-08T20:04:58+08:00">
-                2019-09-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-14T19:26:06+08:00">
+                2019-09-14
               </time>
             
 
@@ -1280,164 +1266,34 @@
         
           
             <p>Hard</p>
-<p><a href="https://leetcode.com/problems/maximal-rectangle/" target="_blank" rel="noopener">https://leetcode.com/problems/maximal-rectangle/</a></p>
-<p>Given a 2D binary matrix filled with 0’s and 1’s, find the largest rectangle containing only 1’s and return its area.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line">  [&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;],</span><br><span class="line">  [&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;],</span><br><span class="line">  [&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;],</span><br><span class="line">  [&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;]</span><br><span class="line">]</span><br><span class="line">Output: 6</span><br></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">https://leetcode.com/problems/median-of-two-sorted-arrays/</a></p>
+<p>There are two sorted arrays <strong>nums1</strong> and <strong>nums2</strong> of size m and n respectively.</p>
+<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+<p>You may assume <strong>nums1</strong> and <strong>nums2</strong> cannot be both empty.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nums1 = [1, 3]</span><br><span class="line">nums2 = [2]</span><br><span class="line"></span><br><span class="line">The median is 2.0</span><br></pre></td></tr></table></figure>
 
 <hr>
-<p>2019.9.8 独立做出来了，参考 84 题的解法</p>
+<p>2019.9.14 没做出来，参考 <a href="https://www.cnblogs.com/zuoyuan/p/3759682.html、https://www.cnblogs.com/grandyang/p/4465932.html" target="_blank" rel="noopener">https://www.cnblogs.com/zuoyuan/p/3759682.html、https://www.cnblogs.com/grandyang/p/4465932.html</a></p>
 <p><strong>方法：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maximalRectangle</span><span class="params">(self, matrix)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type matrix: List[List[str]]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(matrix)==<span class="number">0</span> <span class="keyword">or</span> len(matrix[<span class="number">0</span>])==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        m,n = len(matrix), len(matrix[<span class="number">0</span>])</span><br><span class="line">        height = [<span class="number">0</span>]*n</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> matrix[i][j]==<span class="string">'1'</span>:</span><br><span class="line">                    height[j] = int(matrix[i][j]) + height[j]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    height[j] = <span class="number">0</span></span><br><span class="line">            ans = max(ans, find(height))</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(nums)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(nums)==<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> len(nums)==<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">    nums.append(<span class="number">0</span>)</span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line">    st = []</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i&lt;len(nums):</span><br><span class="line">        <span class="keyword">if</span> len(st)==<span class="number">0</span> <span class="keyword">or</span> nums[st[<span class="number">-1</span>]]&lt;=nums[i]:</span><br><span class="line">            st.append(i)</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            temp = st.pop(<span class="number">-1</span>)</span><br><span class="line">            area = nums[temp]*(i<span class="number">-1</span>-st[<span class="number">-1</span>]) <span class="keyword">if</span> len(st)&gt;<span class="number">0</span> <span class="keyword">else</span> nums[temp]*i</span><br><span class="line">            ans = max(ans, area)</span><br><span class="line">    nums.pop(<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-
-<p><strong>类似题目：</strong></p>
-<p>Paint House<br>H-Index<br>Continuous Subarray Sum</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/08/84-Largest-Rectangle-in-Histogram/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content>
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="APARECIUM">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/08/84-Largest-Rectangle-in-Histogram/" itemprop="url">84. Largest Rectangle in Histogram</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-08T12:35:25+08:00">
-                2019-09-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Hard</p>
-<p><a href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">https://leetcode.com/problems/largest-rectangle-in-histogram/</a></p>
-<p>Given <em>n</em> non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.</p>
-<p><img src="https://assets.leetcode.com/uploads/2018/10/12/histogram.png" alt="img"><br>Above is a histogram where width of each bar is 1, given height = <code>[2,1,5,6,2,3]</code>.</p>
-<p><img src="https://assets.leetcode.com/uploads/2018/10/12/histogram_area.png" alt="img"><br>The largest rectangle is shown in the shaded area, which has area = <code>10</code> unit.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [2,1,5,6,2,3]</span><br><span class="line">Output: 10</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>2019.9.8 没做出来，参考 <a href="https://www.cnblogs.com/lichen782/p/leetcode_Largest_Rectangle_in_Histogram.html" target="_blank" rel="noopener">https://www.cnblogs.com/lichen782/p/leetcode_Largest_Rectangle_in_Histogram.html</a> 和 <a href="https://www.cnblogs.com/grandyang/p/4322653.html" target="_blank" rel="noopener">https://www.cnblogs.com/grandyang/p/4322653.html</a></p>
-<p><strong>方法：</strong></p>
-<p>单调递增栈</p>
-<p>直方图的矩形面积为 “直方条个数×直方条中高度最小的值”。</p>
-<p>（下图转自 <a href="https://www.cnblogs.com/lichen782/p/leetcode_Largest_Rectangle_in_Histogram.html，感谢老哥这张配图为我拨开迷雾...）" target="_blank" rel="noopener">https://www.cnblogs.com/lichen782/p/leetcode_Largest_Rectangle_in_Histogram.html，感谢老哥这张配图为我拨开迷雾...）</a></p>
-<img src="https://images0.cnblogs.com/blog/466943/201307/17223405-ba207c5828a54eca8ca81e04175aa3bd.png" width="300px">
-
-<p>如上图所示，当遇到最后一个递减的直方条 A（红色），那么其前面所有高于它的直方条如果想把 A 也算入矩形面积的话，那么最大的高度也就是 A 的高度了（木桶原理），所以这个时候前面高的直方条再留在这里也没有意义了，可以直接计算一波矩形面积然后移出栈。</p>
-<p>比如一些选手（<strong>若干直方条</strong>）组队参加一个比赛（<strong>取得最大矩形</strong>），如果这时又来了一个大佬（<strong>高于前面的所有直方条</strong>），他们就欢迎欢迎，把新来的大佬捧进小组里（<strong>入栈</strong>）。过了一会来了一个选手 A 求带，这时栈里的选手中最强的大佬（栈顶直方条）觉得 A 加进来的话会拉低水平，不乐意。但是按规则只要 A 出现了就必须加进来，所以大佬一合计，继续待在这里是浪费时间，一帮猪队友带不动，干脆打完一把（<strong>计算矩形面积</strong>）就撤了（<strong>出栈</strong>）。最强大佬离开之后之前次强的选手晋升为最强大佬，如果他比 A 强的话会重复前一个大佬的心路历程，直到栈里选手没有比 A 再强的了，然后 A 顺利<strong>入栈</strong>。</p>
-<p>注意代码里有两个坑：</p>
+<p>想到了用二分查找，但是没想到是<strong>对 k 二分</strong>。</p>
+<p>这道题的关键是把 <strong>“找 nums1 与 nums2 的中位数”</strong> 的问题转化为用一个 getKth(nums1, nums2, k) 函数 <strong>“找 nums1 与 nums2 中第 k (1&lt;=k&lt;=len(nums1)+len(nums2)) 大的数”</strong>（当然我没想到 <em>(:з」∠)\</em></p>
 <ol>
-<li>栈内元素为直方条的 index（而不是直方条高度）</li>
-<li>计算面积时，高为栈顶直方条的高度，宽需要判断一下，详细见代码。</li>
+<li>对于 getKth(nums1, nums2, k)，需要确保 len(nums1)&lt;=len(nums2)，若不满足的话则 return getKth(nums2, nums1, k)</li>
+<li>由于上一条确保了 len(nums1)&lt;=len(nums2)，所以如果 len(nums1)==0 的话则直接返回 nums2[k-1]。</li>
+<li>如果 len(nums1) 与 len(nums2) 都大于 0 且 k==1，那么返回 min(nums1[0], nums2[0])。</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">largestRectangleArea</span><span class="params">(self, heights)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type heights: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(heights)==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> len(heights)==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> heights[<span class="number">0</span>]</span><br><span class="line">        st = []</span><br><span class="line">        heights.append(<span class="number">0</span>)</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i&lt;len(heights):</span><br><span class="line">            <span class="keyword">if</span> len(st)==<span class="number">0</span> <span class="keyword">or</span> heights[st[<span class="number">-1</span>]]&lt;=heights[i]:</span><br><span class="line">                st.append(i)</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                temp = st.pop(<span class="number">-1</span>)</span><br><span class="line">                area = heights[temp]*(i-st[<span class="number">-1</span>]<span class="number">-1</span>) <span class="keyword">if</span> len(st)&gt;<span class="number">0</span> <span class="keyword">else</span> heights[temp]*i</span><br><span class="line">                ans = max(ans, area)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<p>（接下来是重头戏：对 k 二分）</p>
+<ol start="4">
+<li><p>比较 nums1[k/2-1] 与 nums2[k/2-1] 的大小：</p>
+<p>1）如果 nums1[k/2-1] &lt;= nums2[k/2-1]，那么 <strong>nums1[k/2-1]</strong> 在 nums1 中是第 k/2 大的数，同时在 nums2 中最多是第 k/2 -1 大的数（因为 nums1[k/2-1] 小于 nums2 中第 k/2 大的数：nums2[k/2-1]），所以 nums1[k/2-1] 在 nums1 与 nums2 的总数组中<strong>最多是第 (k/2 + k/2 -1) = k-1 大的数</strong>，所以 nums1 与 nums2 中第 k 大的数必然不在 nums1[:k/2] 中，因此可以继续从 nums1[k/2:] 与 nums2 中找第 k/2 大的数。</p>
+<p>2）如果 nums1[k/2-1] &gt; nums2[k/2-1]，与1) 同理，继续从 nums1 与 nums2[k/2:] 中找第 k/2 大的数。</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMedianSortedArrays</span><span class="params">(self, nums1, nums2)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums1: List[int]</span></span><br><span class="line"><span class="string">        :type nums2: List[int]</span></span><br><span class="line"><span class="string">        :rtype: float</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        len1, len2 = len(nums1), len(nums2)</span><br><span class="line">        <span class="keyword">if</span> (len1+len2)%<span class="number">2</span>==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> getKth(nums1, nums2, (len1+len2+<span class="number">1</span>)/<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> (getKth(nums1, nums2, (len1+len2+<span class="number">1</span>)/<span class="number">2</span>) + getKth(nums1, nums2, (len1+len2+<span class="number">2</span>)/<span class="number">2</span>)) / <span class="number">2.0</span></span><br><span class="line">        </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getKth</span><span class="params">(nums1, nums2, k)</span>:</span></span><br><span class="line">    len1, len2 = len(nums1), len(nums2)</span><br><span class="line">    <span class="keyword">if</span> len1&gt;len2:</span><br><span class="line">        <span class="keyword">return</span> getKth(nums2, nums1, k)</span><br><span class="line">    <span class="keyword">if</span> len1==<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> nums2[k<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">if</span> k==<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> min(nums1[<span class="number">0</span>], nums2[<span class="number">0</span>])</span><br><span class="line">    p1 = min(k/<span class="number">2</span>, len1)</span><br><span class="line">    p2 = k - p1</span><br><span class="line">    <span class="keyword">if</span> nums1[p1<span class="number">-1</span>] &lt;= nums2[p2<span class="number">-1</span>]:</span><br><span class="line">        <span class="keyword">return</span> getKth(nums1[p1:], nums2, p2)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> getKth(nums1, nums2[p2:], p1)</span><br></pre></td></tr></table></figure>
 
 <p><strong>类似题目：</strong></p>
-<p>Find the Celebrity<br>Capacity To Ship Packages Within D Days<br>Grumpy Bookstore Owner</p>
+<p>The Skyline Problem<br>Maximum Swap<br>Find K-th Smallest Pair Distance</p>
 
           
         
@@ -1486,7 +1342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/07/128-Longest-Consecutive-Sequence/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/13/155-Min-Stack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content>
@@ -1505,7 +1361,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/07/128-Longest-Consecutive-Sequence/" itemprop="url">128. Longest Consecutive Sequence</a></h1>
+                <a class="post-title-link" href="/2019/09/13/155-Min-Stack/" itemprop="url">155. Min Stack</a></h1>
         
 
         <div class="post-meta">
@@ -1517,8 +1373,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-07T18:10:27+08:00">
-                2019-09-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-13T17:53:11+08:00">
+                2019-09-13
               </time>
             
 
@@ -1557,23 +1413,163 @@
       
         
           
-            <p>Hard</p>
-<p><a href="https://leetcode.com/problems/longest-consecutive-sequence/" target="_blank" rel="noopener">https://leetcode.com/problems/longest-consecutive-sequence/</a></p>
-<p>Given an unsorted array of integers, find the length of the longest consecutive elements sequence.</p>
-<p>Your algorithm should run in O(<em>n</em>) complexity.</p>
+            <p>Easy</p>
+<p><a href="https://leetcode.com/problems/min-stack/" target="_blank" rel="noopener">https://leetcode.com/problems/min-stack/</a></p>
+<p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.</p>
+<ul>
+<li>push(x) – Push element x onto stack.</li>
+<li>pop() – Removes the element on top of the stack.</li>
+<li>top() – Get the top element.</li>
+<li>getMin() – Retrieve the minimum element in the stack. </li>
+</ul>
 <p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [100, 4, 200, 1, 3, 2]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MinStack minStack = new MinStack();</span><br><span class="line">minStack.push(-2);</span><br><span class="line">minStack.push(0);</span><br><span class="line">minStack.push(-3);</span><br><span class="line">minStack.getMin();   --&gt; Returns -3.</span><br><span class="line">minStack.pop();</span><br><span class="line">minStack.top();      --&gt; Returns 0.</span><br><span class="line">minStack.getMin();   --&gt; Returns -2.</span><br></pre></td></tr></table></figure>
 
 <hr>
-<p>2019.9.7 没做出来，参考 <a href="https://www.cnblogs.com/zuoyuan/p/3765546.html" target="_blank" rel="noopener">https://www.cnblogs.com/zuoyuan/p/3765546.html</a></p>
+<p>2019.9.13 没做出来，参考 <a href="https://blog.csdn.net/fuxuemingzhu/article/details/79253237" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/79253237</a></p>
 <p><strong>方法：</strong></p>
-<p>1）首先把 nums[] 中的数字存在字典 include{} 中，key 为 数字，value 为 True，表明初始状态下 include{} 中的数字都是可以选取的。</p>
-<p>2）遍历 nums[]，对其中的每个数字 n，先判断其之前的连续数字 pre 是否可选取，即 <code>pre in include and include[pre]</code>，再判断其之后的连续数字 nxt 是否可选取，即 <code>nxt in include and include[nxt]</code>，并在每次判断之后将已判断过的数字置 False。（之所以可以置 False 是因为每个数字只会存在于唯一一个连续数列中，不存在复用的情况，所以用完就扔即可）</p>
-<p>3）每次判断的时候用一个变量 cur 记录当前连续数列的长度，并和 ans 进行比较取最大的作为最终 ans 返回。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestConsecutive</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;=<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> len(nums)</span><br><span class="line">        include = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            include[n] = <span class="literal">True</span></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            cur = <span class="number">1</span></span><br><span class="line">            pre = n<span class="number">-1</span></span><br><span class="line">            <span class="keyword">while</span> pre <span class="keyword">in</span> include <span class="keyword">and</span> include[pre]:</span><br><span class="line">                include[pre] = <span class="literal">False</span></span><br><span class="line">                cur += <span class="number">1</span></span><br><span class="line">                pre -= <span class="number">1</span></span><br><span class="line">            nxt = n+<span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> nxt <span class="keyword">in</span> include <span class="keyword">and</span> include[nxt]:</span><br><span class="line">                include[nxt] = <span class="literal">False</span></span><br><span class="line">                cur += <span class="number">1</span></span><br><span class="line">                nxt += <span class="number">1</span></span><br><span class="line">            include[n] = <span class="literal">False</span></span><br><span class="line">            ans = max(ans, cur)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<p>辅助栈</p>
+<p>将新增数字 append 到 stack[] 末尾，并将当前的最小值 append 到辅助栈 min[] 末尾，pop 的时候同时将两个栈的末尾元素出栈。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        initialize your data structure here.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.stack = []</span><br><span class="line">        self.min = []</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type x: int</span></span><br><span class="line"><span class="string">        :rtype: None</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.stack.append(x)</span><br><span class="line">        <span class="keyword">if</span> len(self.min)==<span class="number">0</span>:</span><br><span class="line">            self.min.append(x)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.min.append(min(x, self.min[<span class="number">-1</span>]))</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: None</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.stack.pop(<span class="number">-1</span>)</span><br><span class="line">        self.min.pop(<span class="number">-1</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.stack[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getMin</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.min[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
 
 <p><strong>类似题目：</strong></p>
-<p>Binary Tree Longest Consecutive Sequence</p>
+<p><a href="https://leetcode.com/problems/max-stack/" target="_blank" rel="noopener">Max Stack</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/13/437-Path-Sum-III/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content>
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="APARECIUM">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/13/437-Path-Sum-III/" itemprop="url">437. Path Sum III</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-13T17:37:59+08:00">
+                2019-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Easy</p>
+<p><a href="https://leetcode.com/problems/path-sum-iii/" target="_blank" rel="noopener">https://leetcode.com/problems/path-sum-iii/</a></p>
+<p>You are given a binary tree in which each node contains an integer value.</p>
+<p>Find the number of paths that sum to a given value.</p>
+<p>The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).</p>
+<p>The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8</span><br><span class="line"></span><br><span class="line">      10</span><br><span class="line">     /  \</span><br><span class="line">    5   -3</span><br><span class="line">   / \    \</span><br><span class="line">  3   2   11</span><br><span class="line"> / \   \</span><br><span class="line">3  -2   1</span><br><span class="line"></span><br><span class="line">Return 3. The paths that sum to 8 are:</span><br><span class="line"></span><br><span class="line">1.  5 -&gt; 3</span><br><span class="line">2.  5 -&gt; 2 -&gt; 1</span><br><span class="line">3. -3 -&gt; 11</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>2019.9.13 没做出来，参考 <a href="https://blog.csdn.net/fuxuemingzhu/article/details/71097135" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/71097135</a></p>
+<p><strong>方法：</strong></p>
+<p>DFS + DFS（一个 DFS 本身会调用自己，同时也调用另一个 DFS）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pathSum</span><span class="params">(self, root, sum)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :type sum: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> dfs(root, sum) + self.pathSum(root.left, sum) + self.pathSum(root.right, sum)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(node, cur)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> cur==node.val:</span><br><span class="line">        ans += <span class="number">1</span></span><br><span class="line">    ans += dfs(node.left, cur-node.val)</span><br><span class="line">    ans += dfs(node.right, cur-node.val)</span><br><span class="line">    <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<p><strong>类似题目：</strong></p>
+<p>Path Sum<br>Path Sum II<br>Path Sum IV<br>Longest Univalue Path</p>
 
           
         
@@ -1613,7 +1609,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1659,7 +1655,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
